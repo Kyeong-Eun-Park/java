@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hello</h1>
+	<div>
+		<custom-input name="이름"></custom-input>
+	</div>
+	<div>
+		<custom-input name="나이"></custom-input>
+	</div>
+	<div>
+		<custom-input name="주민번호"></custom-input>
+	</div>
+</body>
+<script type="text/javascript">
+	class CustomInput extends HTMLElement {
+		connectedCallback(){
+			let label = document.createElement('label');
+			let input = document.createElement('input');
+			
+			let name = this.getAttribute('name');
+			label.innerHTML = `${name} : `;
+			
+			this.appendChild(label);
+			this.appendChild(input);
+		}
+	}
+	
+	customElements.define('custom-input', CustomInput);	
+</script>
+
+</html>
