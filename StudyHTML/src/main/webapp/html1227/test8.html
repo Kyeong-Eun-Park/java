@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>table 태그</h1>
+	<!-- 
+	<table></table> 태그 : 테이블(표)을 생성하는 태그
+	<tr></tr> 태그 : 1개의 행을 생성하는 태그(데이터 표시 불가능)
+	<th></th> 태그 : 1개의 제목열을 생성하는 태그(데이터 표시 가능, 굵게, 가운데 정렬)
+	<td></td> 태그 : 1개의 열을 생성하는 태그(데이터 표시 가능)
+	=> 기본적으로 <table> 태그 사이에 <tr> 태그를 사용하여 행을 생성한 후
+	   표시할 데이터 갯수만큼 열을 생성하는 <th> 또는 <td> 태그를 통해
+	   데이터를 표시한다. 
+	-->
+	<table border="1"> <!-- 테이블 생성 시 테두리 두께를 1로 지정(최소 두께) -->
+		<tr> <!-- 1행 -->
+			<th>1열</th>
+			<th>2열</th>
+			<th>3열</th>
+			<th>4열</th>
+		</tr>
+		<tr> <!-- 2행 -->
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr> <!-- 3행 -->
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+	</table>
+	<hr>
+	<!-- 
+	테이블 행 또는 열의 크기 조정
+	=> 행 크기(높이) 변경 : height 속성 사용(ex. height="xxx")
+	=> 열 크기(너비) 변경 : width 속성 사용(ex. width="xxx")
+	-->
+	<table border="1">
+		<tr> <!-- 1행 -->
+			<th width="100"></th>
+			<th>월</th>
+			<th>화</th>
+			<th>수</th>
+			<th>목</th>
+			<th>금</th>
+		</tr>
+		<tr> <!-- 2행 -->
+			<th height="50">1교시</th>
+			<td>영어</td>
+			<td>국어</td>
+			<td>과학</td>
+			<td>미술</td>
+			<td>수학</td>
+		</tr>
+		<tr> <!-- 3행 -->
+			<th height="50">2교시</th>
+			<td>국어</td>
+			<td>체육</td>
+			<td>영어</td>
+			<td>수학</td>
+			<td>사회</td>
+		</tr>
+	</table>
+	<hr>
+	<!-- 
+	< th 또는 td 태그의 colspan, rowspan 속성 >
+	colspan : 셀의 너비 지정 = 열(좌우의 칸)끼리 병합(합치기)
+	rowspan : 셀의 높이 지정 = 행(상하의 칸)끼리 병합(합치기)
+	-->
+	<table border="1">
+		<tr> <!-- 1행 -->
+			<th colspan="4">열 병합</th> <!-- 좌우로 다른 셀의 4칸 만큼의 크기 차이(4칸 합침) -->
+				<!-- colspan="4" 에 의해 합쳐지는 공간은 삭제 필요 -->
+<!-- 			<th>열 병합</th> -->
+<!-- 			<th>열 병합</th> -->
+<!-- 			<th>열 병합</th> -->
+		</tr>
+		<tr> <!-- 2행 -->
+			<!-- 행 병합을 위해 병합할 첫번째 행의 th 또는 td 태그에 rowspan 속성 적용 -->
+			<td rowspan="2">1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr> <!-- 3행 -->
+<!-- 			<td>5</td> --> <!-- rowspan="2" 에 의해 합쳐지는 공간은 삭제 필요 -->
+			<td>6</td>
+			<td colspan="2">7</td>
+<!-- 			<td>8</td> --> <!-- colspan="2" 에 의해 합쳐지는 공간은 삭제 필요 -->
+		</tr>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 	글꼴 관련 스타일 속성 */
+	body {
+		/* font-family 속성을 통해 글꼴 변경 */
+/* 		font-family: 궁서체; */
+		/* font-family 속성값으로 복수개의 글꼴 지정 시 차례대로 적용(없으면 다음 폰트 적용) */
+		
+		/* D2Coding 폰트가 존재하므로 해당 폰트 사용 */	
+ 		font-family: D2Coding, 휴먼옛체;  
+
+		/* D2Coding2 폰트가 존재하지 않으므로 휴먼옛체 적용 */
+/* 		font-family: D2Coding2, 휴먼옛체; */
+		
+		/* 
+		font-size : 글자 크기
+		=> 단위 : pt(포인트), em(비율), ex(비율), %(백분율 비율), in, cm, mm, 등등등...
+		*/
+/* 		font-size: 20pt; */
+/* 		font-size: 0.8em; */
+		
+/* 		font-style: italic; */
+
+/* 		font-weight: bold; */
+	}
+	
+	/* h1 선택자를 지정하여 궁서체, 3em 크기 지정 */
+	h1 {
+		font-family: 궁서체;
+		font-size: 3em;
+		color: rgba(0, 0, 0, 0.5); /* rgb 색상에 alpha(투명도) 값을 추가(투명0.0 ~ 1.0불투명)*/
+	}
+	
+	/* class 선택자 "accent" 를 지정하여 폰트 고딕체, 글자 크기 150%, 글자굵기 800 */
+	.accent {
+		font-family: 고딕체;
+		font-size: 150%;
+		font-weight: 800;
+		
+		color: red;
+	}
+	
+	/* class 선택자 "italic" 지정하여 이탤릭체 변경 */
+	.italic {
+		font-style: italic;
+		color: navy;
+		line-height: 2.0;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+</style>
+</head>
+<body>
+	<h1>레드향</h1>
+	<p>껍질에 붉은 빛이 돌아 <span class="accent">레드향</span>이라 불린다.</p>
+	<p>레드향은 한라봉과 귤을 교배한 것으로 일반 귤보다 2~3배 크고, 과육이 붉고 통통하다.</p>
+	<p class="italic">비타민 C 와 비타민 P 가 풍부해 혈액순환, 감기예방 등에 좋은 것으로 알려져 있다.</p>
+	<a href="">레드향</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

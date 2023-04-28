@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>test33.html</h1>
+	<img src="../images/1.jpg" id="img" width="500" height="400">
+	
+	<script type="text/javascript">
+		// img 태그에 클릭이 발생하면 2.jpg 로 src 속성 변경하기
+		let img = document.querySelector("#img");
+		
+		// 익명 함수를 정의하여 이벤트에 직접 연결(해당 대상의 이벤트 전용 함수로 사용됨)
+// 		img.onclick = function() {
+// 			img.src = "../images/2.jpg";
+// 		};
+
+		// 별도로 정의된 함수를 이벤트 발생 시 호출
+		img.onclick = changeImg; // 주의! 함수명만 지정하고 소괄호() 는 기술하지 않는다!
+
+		function changeImg() {
+			img.src = "../images/2.jpg";
+		}
+	</script>
+	
+	<hr>
+	<img src="../images/3.jpg" id="img3" width="500" height="400">
+	<script type="text/javascript">
+		let img3 = document.querySelector("#img3");
+		
+		// 대상 요소에 addEventListener() 메서드를 호출하여
+		// 복수개의 이벤트를 하나의 대상에 등록 가능(필요한 만큼 메서드를 중복 호출)
+// 		// 1) mouseover 이벤트 발생하면 changeImg2 함수 호출
+// 		img3.addEventListener("mouseover", changeImg2);
+// 		// 2) mouseout 이벤트 발생하면 changeImg3 함수 호출
+// 		img3.addEventListener("mouseout", changeImg3);
+		
+// 		function changeImg2() {
+// 			console.log("changeImg2");
+// // 			img3.src = "../images/1.jpg";
+
+// 			// 이벤트 발생한 대상 요소 지정 시 별도로 요소를 가져오지 않고도
+// 			// 키워드 this 사용할 경우 이벤트 핸들러 내에서 
+// 			// 이벤트 발생 대상 지정 가능
+// 			this.src = "../images/1.jpg"; // image 태그(#img3) 의 src 속성에 접근
+// 		}
+		
+// 		function changeImg3() {
+// 			console.log("changeImg3 - this");
+// 			img3.src = "../images/3.jpg";
+// 		}
+
+		// --------------------------------------------------------------
+		// 이벤트 핸들러 함수를 별도로 정의하여 이름을 지정하지 않고
+		// 함수 이름 지정 위치에 익명 함수 형태로 전용 함수를 정의할 경우
+		img3.addEventListener("mouseover", function() {
+			img3.src = "../images/1.jpg";
+		});
+		
+		img3.addEventListener("mouseout", function() {
+			img3.src = "../images/3.jpg";
+		});
+
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

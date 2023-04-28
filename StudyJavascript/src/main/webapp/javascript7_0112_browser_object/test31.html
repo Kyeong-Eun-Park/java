@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	function innText() {
+		// document 객체의 getElementById() 메서드를 호출하여
+		// id 선택자가 "currentTimeText" 인 요소에 접근 후
+		// innerText 속성을 통해 현재 시각 표시
+		let now = new Date();
+		
+// 		alert(document.getElementById("currentTimeText")); // [object HTMLDivElement]
+		document.getElementById("currentTimeText").innerText = "<h3>" + now + "</h3>";
+		// => 지정된 태그(div) 사이에 현재 시각 정보를 표시
+		// => <h3> 태그도 텍스트로 취급되어 그대로 출력됨
+	}
+	
+	function innHtml() {
+		// document 객체의 getElementById() 메서드를 호출하여
+		// id 선택자가 "currentTimeHtml" 인 요소에 접근 후
+		// innerHTML 속성을 통해 현재 시각 표시
+		let now = new Date();
+		
+// 		alert(document.getElementById("currentTimeHtml")); // [object HTMLDivElement]
+		document.getElementById("currentTimeHtml").innerHTML = "<h3>" + now + "</h3>";
+		// => 지정된 태그(div) 사이에 현재 시각 정보를 표시
+		// => <h3> 태그가 적용되어 출력됨
+	}
+</script>
+<body>
+	<h1>test31.html</h1>
+	<button onclick="innText()">innerText로 표시하기</button>
+	<button onclick="innHtml()">innerHtml로 표시하기</button>
+	<hr>
+	<h1>현재 시각(Text)</h1>
+	<div id="currentTimeText"></div>
+	<hr>
+	<h1>현재 시각(Html)</h1>
+	<div id="currentTimeHtml"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

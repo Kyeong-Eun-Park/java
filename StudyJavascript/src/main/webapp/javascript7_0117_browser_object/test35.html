@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document 객체 연습</title>
+<script type="text/javascript">
+	function func3() {
+		// HTML 문서 색상 정보 접근을 위해서 document 객체의 bgColor, fgColor 속성 활용
+		// => bgColor(background color = 배경색) : 주로, 화면의 바탕색
+		// => fgColor(foreground color = 전경색) : 주로, 화면 위에 있는 글자색
+		console.log("bgColor : " + document.bgColor + ", fgColor : " + document.fgColor);
+		console.log("document.body.style.backgroundColor : " + document.body.style.backgroundColor + ", document.body.style.color : " + document.body.style.color);
+	}
+	
+	function func4() {
+		// 문서 배경색을 "red" 로 변경, 전경색을 "yellow" 로 변경
+// 		document.bgColor = "red";
+// 		document.fgColor = "yellow";
+
+		// document 객체의 body 객체에 접근하여 CSS 속성값을 변경
+		// 1) 배경색(background-color 속성) "red" 로 변경
+		// => 주의! 변경된 정보는 document.bgColor 로 확인 불가!
+		document.body.style.backgroundColor = "red";
+		
+		// 2) 전경색(color 속성) "green" 으로 변경
+		document.body.style.color = "green";
+	}
+</script>
+</head>
+<body>
+	<h1>test35.html</h1>
+	<input type="button" value="문서 제목 출력" id="btn1">
+	<input type="button" value="문서 제목 변경" id="btn2">
+	<input type="button" value="문서 배경색 출력" id="btn3" onclick="func3()">
+	<input type="button" value="문서 배경색 변경" id="btn4" onclick="func4()">
+	
+	<script type="text/javascript">
+		// 만약, 대상 요소 지정하여 이벤트를 처리할 경우
+		// 대상 요소 지정을 위해서는 요소가 생성된 후에 자바스크립트가 실행되어야
+		// 해당 요소에 접근이 가능하다!
+		// 따라서, 요소를 생성하는 태그보다 아래쪽에 스크립트 코드가 위치해야한다!
+		// => 단, 태그 내에서 onXXX 이벤트를 직접 지정하여 함수를 호출하는 경우
+		//    요소 생성 태그보다 윗쪽에 함수 정의 스크립트 코드가 위치해도 무관하다!
+		let btn1 = document.querySelector("#btn1");
+		btn1.addEventListener("click", function() {
+			// document 객체의 title 속성(변수) 접근 시 문서의 title 정보 접근 가능
+			// => <head> 태그 내의 <title> 태그에 지정된 텍스트에 접근
+			console.log(document.title);
+		});
+		
+		// btn2 버튼 클릭 시 동작할 이벤트 핸들러를 익명 함수로 정의
+		document.querySelector("#btn2").addEventListener("click", function() {
+			document.title = "title 변경";
+		});
+	</script>
+	
+	<hr>
+	
+	<!-- 라디오버튼 3개의 이벤트를 하나로 연결 -->
+<!-- 	<input type="radio" name="bgColor" value="CYAN" onclick="func5('CYAN')">CYAN -->
+<!-- 	<input type="radio" name="bgColor" value="MAGENTA" onclick="func5('MAGENTA')">MAGENTA -->
+<!-- 	<input type="radio" name="bgColor" value="ORANGE" onclick="func5('ORANGE')">ORANGE -->
+	
+	<!-- 함수 호출 시 파라미터에 this.xxx 지정 시 자신의 태그 요소의 xxx 속성값 전달 -->
+	<input type="radio" name="bgColor" value="CYAN" onclick="func5(this.value)">CYAN
+	<input type="radio" name="bgColor" value="MAGENTA" onclick="func5(this.value)">MAGENTA
+	<input type="radio" name="bgColor" value="ORANGE" onclick="func5(this.value)">ORANGE
+	
+	<script type="text/javascript">
+		// 라디오버튼 선택(클릭) 시 해당 value 속성값과 동일한 색상으로 문서 배경색 변경
+		// => 전달받은 파라미터를 저장할 변수 지정(color)
+		function func5(color) {
+			document.bgColor = color; 
+		}
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

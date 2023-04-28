@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// btnClick() 함수 정의
+	// => 이 함수는 버튼5 클릭 시 호출될 함수
+	// => alert() 함수를 사용하여 "버튼5 클릭!" 메세지 출력
+	function btnClick() {
+		alert("버튼5 클릭!");
+	}
+	
+	// btnClick2() 함수 정의
+	// => 이 함수는 버튼6 클릭 시 호출될 함수
+	// => 파라미터로 문자열 1개를 전달받아 변수 str 에 저장 후
+	//    저장된 문자열을 alert() 함수를 통해 출력
+	function btnClick2(str) {
+		alert(str);
+	}
+	
+	// btnClick3() 함수 정의
+	// => 이 함수는 버튼7 클릭 시 호출될 함수
+	// => "리턴값" 이라는 문자열 리턴
+	function btnClick3() {
+		return "리턴값";
+	}
+	
+	// 퀴즈를 출제하여 정답을 입력받아 비교 후 결과를 출력하는 showQuiz() 함수 정의
+	function showQuiz() {
+		// 사용자로부터 퀴즈 정답을 입력받아 변수 answer 에 저장
+		// => 출력할 퀴즈는 아무거나 작성
+		let answer = prompt("담임 선생님의 이름은?");
+		
+		// 입력받은 정답 출력
+// 		alert("입력한 정답 : " + answer);
+		
+		// 입력받은 정답이 기존의 정답과 일치하는지 판별하여
+		// 일치할 경우 "정답입니다!" 출력하고, 아니면 "오답입니다!" 출력
+		if(answer == "이연태") {
+			alert("정답입니다!");
+		} else {
+			alert("오답입니다!");
+		}
+		
+	}
+	
+	// 이미지 확대하는 zoomIn() 함수 정의
+	function zoomIn(event) {
+		event.target.style.transform = "scale(1.2)"; // 1.2 배 확대
+		event.target.style.zIndex = 1;
+		event.target.style.transition = "all 0.5s"; // 0.5 초동안 움직이기(확대)
+	}
+	
+	// 이미지 확대를 취소하는 zoomOut() 함수 정의
+	function zoomOut(event) {
+		event.target.style.transform = "scale(1)"; // 1.5 배 확대
+		event.target.style.zIndex = 0;
+		event.target.style.transition = "all 0.5s"; // 0.5 초동안 움직이기(확대)
+	}
+	
+	
+</script>
+</head>
+<body>
+	<h1>test23.html</h1>
+	<!-- 
+	[ 이벤트(Event) ]
+	- 어떤 대상에 어떤 일이 발생하는 것
+	- 웹에서의 이벤트란? 어떤 대상에 사용자가 특정 액션을 취하는 것
+	  ex) 버튼 클릭, 텍스트 입력, 마우스 이동 등
+	- 이벤트가 발생하면 해당 이벤트에 대한 동작을 처리하도록 하는 것을 
+	  이벤트 처리(Event Handling)라고 하고, 
+	  처리를 하기 위한 함수를 이벤트 처리기(Event Handler) 라고 한다.
+	
+	[ 이벤트 처리(Event Handling) ]
+	- 이벤트가 발생했을 때 특정 작업을 수행하도록 하는 것
+	  ex) 버튼 클릭 이벤트 발생 시 alert() 함수를 통해 메세지를 표시
+	      텍스트 입력 이벤트 발생 시 숫자가 입력됐는지 판별
+	      이미지에 마우스 오버 이벤트 발생 시 다른 이미지로 전환
+	- 이벤트가 등록될 대상 컴포넌트(버튼, 텍스트상자 등의 요소)에 
+	  onXXX 속성을 사용하여 이벤트 종류를 지정하고
+	  해당 속성의 값으로 자바스크립트 코드(이벤트 핸들러)를 통해 이벤트 처리 수행 가능
+	  ex) 버튼 등을 클릭 시 동작할 이벤트 : click => onclick 으로 등록
+	      마우스를 특정 대상 위에 가져다 대는 이벤트 : mouseover => onmouseover 로 등록
+	  => onXXX 속성의 값으로 자바스크립트 함수(내장함수 포함) 를 직접 호출하여 작업 수행 가능
+	     (이 때, XXX 부분에 이벤트명을 지정)
+	     ex) onclick="alert('버튼클릭됨!')" 
+	         => 주의! 함수 호출 코드를 큰따옴표 내부에 지정할 경우
+	            문자열 데이터 등을 표현할 때는 작은따옴표를 사용하여 표현하면 된다!
+	
+	< 특정 태그에 대한 이벤트 등록 기본 문법 >
+	<XXX태그  onXXX="자바스크립트함수호출()">     
+	-->
+	
+	<!-- 
+	HTML 태그에서 버튼을 생성하는 방법
+	1. <input> 태그의 type="button" 속성 사용(value 속성을 통해 버튼 텍스트 지정)
+	2. <button> 태그 사용(시작태그와 끝태그 사이에 버튼 텍스트 지정)
+	-->
+	<input type="button"> <!-- 일반 버튼 생성(버튼의 텍스트가 없는 버튼) -->
+	<input type="button" value="버튼"> <!-- 일반 버튼 생성("버튼" 이라는 텍스트가 표시됨) -->
+	<button>버튼2</button>
+	<hr>
+	
+	<!-- 버튼 7개 생성하기("버튼1" ~ "버튼7") -->
+	<!-- 버튼 클릭 시 특정 동작을 수행하려면 click 이벤트에 대한 핸들링(처리) 필요 -->
+	<!-- button 태그에 onclick 속성을 사용하여 버튼 이벤트 처리 -> 속성값으로 함수 호출 -->
+	<input type="button" value="버튼1" onclick="alert('버튼1 클릭!')">
+<!-- 	<input type="button" value="버튼2" onclick="alert('버튼2 클릭!')"> -->
+	<button onclick="alert('버튼2 클릭! - button')">버튼2</button>
+	<input type="button" value="버튼3" ondblclick="alert('버튼3 더블클릭!')">
+	<!-- 하나의 요소(컴포넌트)에 복수개의 이벤트 연결 가능 -->
+	<input type="button" value="버튼4" 
+				onmouseover="alert('버튼4 마우스오버')" onmouseout="alert('버튼4 마우스아웃')">
+	<!-- 버튼5 클릭 시 사용자 정의 함수 btnClick() 호출 -->				
+	<input type="button" value="버튼5" onclick="btnClick()">
+	<!-- 버튼6 클릭 시 사용자 정의 함수 btnClick2() 호출(문자열 1개 전달) -->				
+	<input type="button" value="버튼6" onclick="btnClick2('Hello, World!')">
+	<!-- 버튼7 클릭 시 사용자 정의 함수 btnClick3() 호출(리턴값 전달받아 alert() 함수로 출력) -->				
+	<input type="button" value="버튼7" onclick="alert(btnClick3())">
+	<hr>
+	
+	<!-- "퀴즈풀기" 버튼 클릭 시 showQuiz() 함수 호출 -->
+	<input type="button" value="퀴즈풀기" onclick="showQuiz()">
+	<hr>
+	
+	<!-- 
+	이미지에 마우스를 올리면(mouseover) zoomIn() 함수를 호출하고, 
+	마우스를 빼면(mouseout) zoomOut() 함수 호출
+	=> 파라미터로 이벤트 객체를 전달하기 위해 event 라는 객체 전달 
+	-->
+	<img src="../images/1.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/2.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/3.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

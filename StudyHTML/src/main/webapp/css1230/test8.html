@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	body {
+		background-color: #BBB;
+	}
+	
+	p {
+		background-color: white;
+	}
+	
+	/* 공백(자손선택자) : section 태그의 자식을 포함한 모든 자손 p 태그들에 동시 적용 */
+	section p {
+		color: blue;
+	}
+	
+	/* >(자식선택자) : section 태그의 하위 자식에 해당하는 p 태그만 적용 */
+	section > p {
+		font-style: italic;
+		font-weight: bold;
+	}
+	
+	input[type=text] {
+	}
+</style>
+</head>
+<body>
+	<section>
+		<h1>예약 방법 & 사용 요금</h1>
+		<p>아직 온라인 예약 신청이 준비되지 않았습니다</p>
+		<div>
+			<p>가족실(2~4인)</p>
+			<p>도미토리(4인 공용)</p>
+		</div>
+	</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

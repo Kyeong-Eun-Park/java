@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	Date 객체
+	- 날짜 및 시각 정보를 관리하는 객체
+	- 다양한 메서드를 통해 날짜 및 시각 정보를 처리
+	*/
+	// 1. new Date() : 현재 시스템의 날짜 및 시각 정보를 기준으로 Date 객체 생성
+	let date1 = new Date();
+	document.write(date1 + "<br>"); // Wed Jan 11 2023 17:00:50 GMT+0900 (한국 표준시)
+	// => 세계 날짜 및 시각 표기법으로 출력됨
+	
+	// 2. new Date("YYYY-MM-DD") : 지정된 날짜 정보를 기준으로 Date 객체 생성
+	let date2 = new Date("2020-10-10"); // 2020년 10월 10일로 설정(시각은 00시 00분 00초)
+	document.write(date2 + "<br>"); // Sat Oct 10 2020 09:00:00 GMT+0900 (한국 표준시)
+	// => 시각 정보를 생략 시 세계 표준시 기준 00시 00분 00초이며,
+	//    한국 표준시 시준 09시 00분 00초로 설정됨
+	
+	// 3. new Date("YYYY-MM-DDThh:mm:ss") : 지정된 날짜 및 시각 정보를 기준으로 Date 객체 생성
+	let date3 = new Date("2020-10-10T23:59:59"); // 2020년 10월 10일 23시 59분 59초로 설정
+	document.write(date3 + "<br>"); // Sat Oct 10 2020 23:59:59 GMT+0900 (한국 표준시)
+	
+	document.write("<hr>");
+	
+	let now = new Date(); // 현재 시각 기준 객체 생성
+	let startDay = new Date("2022-12-22"); // 2022년 12월 12일 기준 객체 생성
+	
+	// getTime() : 1970년 1월 1일 00시 00분 00초(UTC = 세계표준시) 기준으로
+	//             지정된 날짜와의 차이를 밀리초(ms = 1/1000초) 단위로 리턴
+	let nowTime = now.getTime(); // 1673424561837
+	let startTime = startDay.getTime(); // 1671667200000
+	let passedTime = nowTime - startTime; // 1757361837
+	document.write("nowTime : " + nowTime + "<br>");
+	document.write("startTime : " + startTime + "<br>");
+	document.write("passedTime : " + passedTime + "<br>");
+	
+	// 두 날짜의 차이 계산 : 기준일 - 대상일
+	// => 1) 결과값이 양수 : 기준일자가 대상보다 미래(XX일 경과)
+	// => 2) 결과값이 음수 : 기준일자가 대상보다 과거(XX일 남음)
+	// => 3) 결과값이 0 : 기준일자와 대상이 동일(오늘)
+	// => 값이 모두 밀리초 단위이므로 XX일을 계산하기 위해서는 변환이 필요
+	//    밀리초 -> 초 -> 분 -> 시 -> 일
+	//    따라서, 기준값을 1000 으로 나누면 초 단위로 변환되고
+	//    다시 60 으로 나누면 분 단위, 다시 60 으로 나누면 시간 단위,
+	//    다시 24 로 나누면 일 단위로 변환됨
+// 	let differenceTime = passedTime / 1000 / 60 / 60 / 24;
+	
+	// Math 객체의 round() 메서드를 활용하면 반올림 가능
+	// => 객체 생성 없이 Math.메서드명() 으로 바로 호출
+	let differenceTime = Math.round(passedTime / 1000 / 60 / 60 / 24); // 소수점 첫째자리 반올림(정수)
+	document.write("differenceTime : " + differenceTime + "일 ");
+	
+	// 결과값이 양수일 경우 "지났습니다!" 출력, 음수일 경우 "남았습니다!" 출력
+	if(differenceTime > 0) {
+		document.write("지났습니다!");
+	} else if(differenceTime < 0) {
+		document.write("남았습니다!");
+	} else {
+		document.write(" : 현재입니다!");
+	}
+	
+	document.write("<hr>");
+	
+	let now2 = new Date();
+	document.write("현재 연도 : " + now2.getFullYear() + "<br>"); // 2023
+// 	document.write("현재 월 : " + now2.getMonth() + "<br>"); // 0 ~ 11월 사이의 값 출력
+	document.write("현재 월 : " + (now2.getMonth() + 1) + "<br>"); // 월 + 1 필요
+	document.write("현재 일 : " + (now2.getDate()) + "<br>"); // 11
+	
+	// getDay() : 요일 값을 0 ~ 6 까지 표기(0 : 일요일, 6 : 토요일)
+	switch(now2.getDay()) {
+		case 0 : document.write("현재 요일 : 일<br>"); break;
+		case 1 : document.write("현재 요일 : 월<br>"); break;
+		case 2 : document.write("현재 요일 : 화<br>"); break;
+		case 3 : document.write("현재 요일 : 수<br>"); break;
+		case 4 : document.write("현재 요일 : 목<br>"); break;
+		case 5 : document.write("현재 요일 : 금<br>"); break;
+		case 6 : document.write("현재 요일 : 토<br>"); break;
+	}
+	
+	let hour = now2.getHours();
+	let min = now2.getMinutes();
+	let sec = now2.getSeconds();
+	document.write("현재 시각 : " + hour + "시 " + min + "분 " + sec + "초");
+	
+	document.write("<hr>");
+	
+	now2.setFullYear(2000); // Date 객체의 연도를 설정(변경)
+	document.write(now2);
+	
+	document.write("<hr>");
+	
+	let n = 1.234;
+	document.write(Math.round(n * 10) / 10 + "<br>");
+	document.write(Math.round(n * 100) / 100);
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

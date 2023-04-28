@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// for문
+	// document.write() 함수를 사용하여 "Hello, World!" 문자열 3번 출력
+	document.write("Hello, World!<br>");
+	document.write("Hello, World!<br>");
+	document.write("Hello, World!<br>");
+	document.write("<hr>");
+	
+	// for문을 사용하여 "Hello, World!" 문자열을 3번 반복 출력
+	// 1) 초기식 : 반복 횟수를 결정하는데 사용할 변수 선언 및 초기화(변수 i 값을 1로 초기화)
+	// 2) 조건식 : 반복 횟수를 결정하는데 사용되는 목표값을 지정하는 식
+	//             => 제어변수 i 값이 3보다 작거나 같을 동안을 조건으로 지정
+	// 3) 실행문 : 조건식 판별 결과가 true 일 때 실행할 문장 작성
+	//             => "Hello, World!" 문자열 출력하는 문장 기술
+	// 4) 증감식 : 반복 횟수를 결정하는데 사용되는 변수의 증감을 위한 식
+	//             => i 가 1 부터 3 까지 1씩 증가(i = i + 1 또는 i += 1 또는 i++ 사용 가능)
+	for(var i = 1; i <= 3; i++) {
+		// 제어변수 i가 1부터 시작하여, 3보다 작거나 같을 동안 1씩 증가하면서 출력문을 반복
+// 		document.write("Hello, World!<br>");
+		document.write(i + " : Hello, World!<br>"); // 제어변수도 활용 가능
+	}
+	
+	// 주의! for문 내에서 let 으로 변수 선언 시 for문 밖에서 접근이 불가능하다!
+	// => var 는 선언 위치와 무관하게 사용 가능
+	document.write("반복문 종료 후 i값 = " + i); // for문 빠져나올 때 i값이 4인채로 빠져나옴
+	
+	/*
+	위의 반복문에 대한 디버깅 과정(= 추적)
+	-----------------------------------------------------------------------------------
+	초기식(i)    조건식(i <= 3)   실행문(i + " : Hello, World!" 출력)    증감식(i++)
+	-----------------------------------------------------------------------------------
+	 i = 1           true            "1 : Hello, World!" 출력          i 가 1 -> 2 증가
+	 i = 2           true            "2 : Hello, World!" 출력          i 가 2 -> 3 증가
+	 i = 3           true            "3 : Hello, World!" 출력          i 가 3 -> 4 증가
+	 i = 4           false           for문 반복 실행을 종료하고 빠져나감
+	-----------------------------------------------------------------------------------
+	*/
+	document.write("<hr>");
+	 
+	// 자신의 이름을 10번 반복 출력
+	for(var i = 1; i <= 10; i++) {
+		document.write(i + " : 이연태<br>");
+	}
+	document.write("반복문 종료 후 i값 = " + i);
+	
+	document.write("<hr>");
+	// 숫자(정수) 1개를 입력받아 변수 num 에 저장 후 1 ~ num 까지 1씩 증가하면서 출력
+	// ex) 5 입력 시 : 1 2 3 4 5 출력
+// 	let num = prompt("정수를 입력하세요");
+// 	document.write(num);
+
+// 	for(var i = 1; i <= num; i++) {
+// 		document.write(i + " ");
+// 	}
+	
+	document.write("<hr>");
+	// 입력받은 정수(num) 을 활용하여 1 ~ num 까지 정수 중 홀수와 짝수를 구별
+	// ex) 5 입력 시 - 1 : 홀수, 2 : 짝수, 3 : 홀수, 4 : 짝수, 5 : 홀수 출력
+	// hint) for문과 if문을 조합
+// 	let num = prompt("정수를 입력하세요");
+// // 	document.write(num);
+	
+// 	for(let i = 1; i <= num; i++) {
+// // 		document.write(i + " ");
+
+// 		// 홀수(정수를 2로 나눈 나머지가 1) 판별
+// 		if(i % 2 == 1) { // 홀수
+// 			document.write(i + " : 홀수!<br>");
+// 		} else { // 홀수가 아닌 수(= 짝수)
+// 			document.write(i + " : 짝수!<br>");
+// 		}
+// 	}
+	
+	// -------------------------------------------------
+	// 정수 1 ~ 10 까지의 합(55)을 계산하여 출력
+	// 1) 합계를 누적할 누적변수 선언(합계 누적을 위해 초기화 필수!)
+	let total = 0;
+	// 2) 반복문을 통해 누적할 값 반복하면서 합계 누적
+	for(let i = 1; i <= 10; i++) {
+		total += i; // total = total + i 와 동일
+	}
+	
+	// 3) 반복문 종료 후 누적 결과 출력
+	document.write("1 ~ 10 까지의 합 = " + total);
+	
+	document.write("<hr>");
+	// 1 ~ 10 까지의 정수를 홀수의 합과 짝수의 합으로 분리하여 계산 후 출력
+	// => 홀수의 합 : 25, 짝수의 합 : 30
+	let oddTotal = 0; // 홀수의 합 저장 변수
+	let evenTotal = 0; // 짝수의 합 저장 변수
+	
+	for(let i = 1; i <= 10; i++) {
+		// 홀수, 짝수 판별
+		if(i % 2 == 0) { // 짝수
+			// 짝수의 합 누적
+			evenTotal += i;
+// 			document.write("evenTotal = " + evenTotal + "<br>");
+		} else { // 홀수
+			// 홀수의 합 누적
+			oddTotal += i;
+// 			document.write("oddTotal = " + oddTotal + "<br>");
+		}
+	}
+	
+	document.write("홀수의 합 = " + oddTotal + "<br>짝수의 합 = " + evenTotal);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
