@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <!--
+    gravity 속성과 layout_gravity 속성
+    1. gravity 속성 : 대상 뷰의 내부 정렬 설정
+                     ex) 버튼 내부 텍스트 등의 위치 정렬
+       - 속성 값에 left, right 등 위치 전달 통해 정렬 설정
+         또한, 복수개의 속성 설정 시 설정값을 | 기호로 구분
+       - 별도의 gravity 속성을 지정하지 않으면 기본값은 center(가운데 정렬)
+    -->
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:text="GRAVITY_LEFT"
+        android:gravity="left|center_vertical"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:text="GRAVITY_CENTER"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:text="GRAVITY_RIGHT"
+        android:gravity="right|bottom"/>
+
+    <!--
+    2. layout_gravity 속성: 부모로부터 자신의 위치 정렬
+    => layout_gravity 속성 위치 변경 시 내부 위젯이 전체 이동됨
+    -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LEFT"
+        android:layout_gravity="left"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CENTER"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RIGHT"
+        android:layout_gravity="right"/>
+
+
+</LinearLayout>

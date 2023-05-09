@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.And0502_LinearLayout"
+        tools:targetApi="31">
+
+        <!-- 애플리케이션 시작 시 표시할 액티비티(프로그램 시작점) 지정 방법 -->
+        <!-- 표시할 액티비티(클래스)를 name속성에 지정 -->
+        <!--<activity
+            android:name=".MainActivity"
+            android:exported="true">-->
+
+        <activity
+            android:name=".LayoutTestActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
