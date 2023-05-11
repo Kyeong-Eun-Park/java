@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0b5a43c6-ce70-479b-8b46-2bff20a5eec3" name="Changes" comment="안드로이드 백업" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PXRBTKzM6soCV86TqZuevjEbma" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/user/AndroidStudioProjects"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b5a43c6-ce70-479b-8b46-2bff20a5eec3" name="Changes" comment="" />
+      <created>1683601304089</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683601304089</updated>
+    </task>
+    <task id="LOCAL-00001" summary="안드로이드 백업">
+      <created>1683602219111</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683602219112</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="ac1cbc4c-d5e5-43d0-b227-1d95add6c8bb">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0411_Button" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0413_Button_EditText" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0413_Padding_Margin" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0417_SimpleCalculator" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0418_CheckBox" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0420_radiobutton" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0420_Switch_ToggleButton" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0424_ImageView" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0425_Picture_Viewer" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0425_Picture_Viewer2" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0502_linearlayout" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0504_Duplicate_LinearLayout" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0504_TableLayoout" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0504_TableLayout" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0508_ScrollView" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0508_SlidingDrawer" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0509_Dialog" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0509_ViewFilpper" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/And0509_WebView" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/BasicApplication" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/Images" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/MyApplication" />
+                        <option value="dir:C:/Users/user/AndroidStudioProjects/TestApplication" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="ac1cbc4c-d5e5-43d0-b227-1d95add6c8bb" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="안드로이드 백업" />
+    <option name="LAST_COMMIT_MESSAGE" value="안드로이드 백업" />
+  </component>
+</project>
