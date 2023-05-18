@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="전화걸기"
+        android:textSize="30sp"
+        android:id="@+id/btnDial"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="홈페이지 열기"
+        android:textSize="30sp"
+        android:id="@+id/btnWeb"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="구글맵 열기"
+        android:textSize="30sp"
+        android:id="@+id/btnGoogle"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="구글 검색하기"
+        android:textSize="30sp"
+        android:id="@+id/btnSearch"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문자 보내기"
+        android:textSize="30sp"
+        android:id="@+id/btnSms"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="사진 찍기"
+        android:textSize="30sp"
+        android:id="@+id/btnPhoto"
+        />
+
+</LinearLayout>
