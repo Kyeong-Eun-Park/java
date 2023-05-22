@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.itwillbs.spring_mvc_board.vo.BoardVO;
+import com.itwillbs.spring_mvc_board.vo.TinyReplyBoardVO;
 
 public interface BoardMapper {
 
@@ -47,6 +48,18 @@ public interface BoardMapper {
 	
 	// 답글 쓰기
 	int insertReplyBoard(BoardVO board);
+
+	// 댓글 쓰기
+	int insertTinyReplyBoard(TinyReplyBoardVO board);
+
+	// 댓글 목록 조회
+	List<TinyReplyBoardVO> selectTinyReplyBoardList(int board_num);
+
+	// 댓글 삭제
+	int deleteTinyReplyBoard(TinyReplyBoardVO board);
+
+	// 대댓글 쓰기
+	int insertTinyReReplyBoard(TinyReplyBoardVO board);
 
 
 }

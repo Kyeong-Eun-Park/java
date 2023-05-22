@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itwillbs.spring_mvc_board.service.BoardService;
 import com.itwillbs.spring_mvc_board.vo.BoardVO;
 import com.itwillbs.spring_mvc_board.vo.PageInfo;
+import com.itwillbs.spring_mvc_board.vo.TinyReplyBoardVO;
 
 @Controller
 public class BoardController {
@@ -183,15 +185,90 @@ public class BoardController {
 	//               데이터 공유 객체 Model(model)
 	// => 검색어를 입력하지 않고 검색버튼 클릭했을 때에도 전체 게시물 목록 조회
 	//    (필요에 따라 검색어 미입력 시 경고창 출력 또는 아무 동작 수행하지 않을 수 있음)
+//	@GetMapping("/BoardList.bo")
+//	public String list(
+//			@RequestParam(defaultValue = "") String searchType, 
+//			@RequestParam(defaultValue = "") String searchKeyword, 
+//			@RequestParam(defaultValue = "1") int pageNum, 
+//			Model model) {
+////		System.out.println("검색타입 : " + searchType);
+////		System.out.println("검색어 : " + searchKeyword);
+////		System.out.println("페이지번호 : " + pageNum);
+//		
+//		// -----------------------------------------------------------------------
+//		// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
+//		int listLimit = 10; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
+//		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
+//		// -----------------------------------------------------------------------
+//		// BoardService - getBoardList() 메서드를 호출하여 게시물 목록 조회
+//		// => 파라미터 : 검색타입, 검색어, 시작행번호, 목록갯수
+//		// => 리턴타입 : List<BoardVO>(boardList)
+//		List<BoardVO> boardList = 
+//				service.getBoardList(searchType, searchKeyword, startRow, listLimit);
+//		// -----------------------------------------------------------------------
+//		// 페이징 처리를 위한 계산 작업
+//		// 한 페이지에서 표시할 페이지 목록(번호) 갯수 계산
+//		// 1. BoardListService - getBoardListCount() 메서드를 호출하여
+//		//    전체 게시물 수 조회(페이지 목록 갯수 계산에 사용)
+//		//    => 파라미터 : 검색타입, 검색어   리턴타입 : int(listCount)
+//		int listCount = service.getBoardListCount(searchType, searchKeyword);
+////		System.out.println("총 게시물 수 : " + listCount);
+//		
+//		// 2. 한 페이지에서 표시할 페이지 목록 갯수 설정
+//		int pageListLimit = 5; // 페이지 목록 갯수를 5개로 제한
+//		
+//		// 3. 전체 페이지 목록 수 계산
+//		// => 전체 게시물 수를 목록 갯수로 나누고, 남은 나머지가 0보다 클 경우 페이지 수 + 1
+//		//    (페이지수 + 1 계산하기 위해 삼항연산자 활용)
+//		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+//		
+//		// 4. 시작 페이지 번호 계산
+//		// => 페이지 목록 갯수가 3일 때
+//		//    1 ~ 3 페이지 사이일 경우 시작 페이지 번호 : 1
+//		//    4 ~ 6 페이지 사이일 경우 시작 페이지 번호 : 4
+//		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+//		
+//		// 5. 끝 페이지 번호 계산
+//		// => 시작 페이지 번호에 페이지 목록 갯수를 더한 후 - 1
+//		int endPage = startPage + pageListLimit - 1;
+//		
+//		// 만약, 끝 페이지 번호(endPage) 가 최대 페이지 번호(maxPage) 보다 클 경우
+//		// 끝 페이지 번호를 최대 페이지 번호로 교체
+//		if(endPage > maxPage) {
+//			endPage = maxPage;
+//		}
+//		
+//		// 페이징 처리 정보를 저장하는 PageInfo 클래스 인스턴스 생성 및 데이터 저장
+//		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
+//		System.out.println(pageInfo);
+//		// ------------------------------------------------------------------------------------
+//		// 조회된 게시물 목록 객체(boardList) 와 페이징 정보 객체(pageInfo)를 Model 객체에 저장
+//		model.addAttribute("boardList", boardList);
+//		model.addAttribute("pageInfo", pageInfo);
+//		
+//		return "board/board_list";
+//	}
+	
+	// AJAX 요청을 통한 글목록 조회를 위해 기본 글목록(BoardList.bo) 서블릿 요청 시
+	// 무조건 board_list.jsp 페이지로 포워딩(해당 페이지에서 BoardListJson.bo 서블릿 요청)
 	@GetMapping("/BoardList.bo")
-	public String list(
+	public String list() {
+		return "board/board_list";
+	}
+	
+	// AJAX 요청을 통한 글목록 조회(무한스크롤 기능 추가)를 위한 JSON 데이터 응답 구현
+	// => AJAX 요청에 대한 글목록 데이터를 JSON 데이터 형식으로 응답
+	// => 현재 메서드에서 JSON 타입 응답 데이터를 바로 생성하여 출력하기 위해
+	//    @ResponseBody 어노테이션 활용
+	// => 응답 데이터를 문자열로 리턴하려면 String 타입, 출력스트림으로 리턴하려면 void 지정
+	// => 만약, 응답 데이터의 한글이 깨질 경우 매핑 데이터에 인코딩 정보 추가
+	@ResponseBody
+	@GetMapping("/BoardListJson.bo")
+	public String listJson(
 			@RequestParam(defaultValue = "") String searchType, 
 			@RequestParam(defaultValue = "") String searchKeyword, 
 			@RequestParam(defaultValue = "1") int pageNum, 
 			Model model) {
-//		System.out.println("검색타입 : " + searchType);
-//		System.out.println("검색어 : " + searchKeyword);
-//		System.out.println("페이지번호 : " + pageNum);
 		
 		// -----------------------------------------------------------------------
 		// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
@@ -203,48 +280,21 @@ public class BoardController {
 		// => 리턴타입 : List<BoardVO>(boardList)
 		List<BoardVO> boardList = 
 				service.getBoardList(searchType, searchKeyword, startRow, listLimit);
-		// -----------------------------------------------------------------------
-		// 페이징 처리를 위한 계산 작업
-		// 한 페이지에서 표시할 페이지 목록(번호) 갯수 계산
-		// 1. BoardListService - getBoardListCount() 메서드를 호출하여
-		//    전체 게시물 수 조회(페이지 목록 갯수 계산에 사용)
-		//    => 파라미터 : 검색타입, 검색어   리턴타입 : int(listCount)
-		int listCount = service.getBoardListCount(searchType, searchKeyword);
-//		System.out.println("총 게시물 수 : " + listCount);
-		
-		// 2. 한 페이지에서 표시할 페이지 목록 갯수 설정
-		int pageListLimit = 5; // 페이지 목록 갯수를 5개로 제한
-		
-		// 3. 전체 페이지 목록 수 계산
-		// => 전체 게시물 수를 목록 갯수로 나누고, 남은 나머지가 0보다 클 경우 페이지 수 + 1
-		//    (페이지수 + 1 계산하기 위해 삼항연산자 활용)
-		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
-		
-		// 4. 시작 페이지 번호 계산
-		// => 페이지 목록 갯수가 3일 때
-		//    1 ~ 3 페이지 사이일 경우 시작 페이지 번호 : 1
-		//    4 ~ 6 페이지 사이일 경우 시작 페이지 번호 : 4
-		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
-		
-		// 5. 끝 페이지 번호 계산
-		// => 시작 페이지 번호에 페이지 목록 갯수를 더한 후 - 1
-		int endPage = startPage + pageListLimit - 1;
-		
-		// 만약, 끝 페이지 번호(endPage) 가 최대 페이지 번호(maxPage) 보다 클 경우
-		// 끝 페이지 번호를 최대 페이지 번호로 교체
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
-		
-		// 페이징 처리 정보를 저장하는 PageInfo 클래스 인스턴스 생성 및 데이터 저장
-		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
-		System.out.println(pageInfo);
 		// ------------------------------------------------------------------------------------
-		// 조회된 게시물 목록 객체(boardList) 와 페이징 정보 객체(pageInfo)를 Model 객체에 저장
-		model.addAttribute("boardList", boardList);
-		model.addAttribute("pageInfo", pageInfo);
+		// 자바 데이터를 JSON 형식 객체로 변환하기
+		// => org.json 패키지의 JSONObject 클래스를 활용하여 JSON 객체 관리하고,
+		//    JSONArray 클래스를 활용하여 JSONObject 복수개 또는 복수개의 데이터를 관리
+		// 1. JSONObject 객체 복수개를 저장할 JSONArray 클래스의 인스턴스 생성
+		//    => 이 때, 파라미터로 List 객체(컬렉션) 전달 시 전체 변환 가능
+		JSONArray jsonArray = new JSONArray(boardList);
+		// 참고. 만약, 각각의 BoardVO 객체를 다루려면 반복문을 통해 BoardList 에서 객체 꺼내서
+		// JSONObject 객체로 변환 후 각 JSONObject 객체를 JSONArray 객체에 추가(put())
+//		System.out.println(jsonArray);
 		
-		return "board/board_list";
+		// 2. 생성된 JSONArray 객체를 그대로 리턴 => 문자열로 변환
+		//    => 단, 출력스트림을 사용할 경우 리턴타입 void 로 지정하고, 출력스트림으로 출력
+		// ex) response.getWriter().print(jsonArray);
+		return jsonArray.toString();
 	}
 	
 	// "/BoardDetail.bo" 서블릿 요청에 대한 글 상세정보 조회 
@@ -266,6 +316,15 @@ public class BoardController {
 		
 		// Model 객체에 BoardVO 객체 추가
 		model.addAttribute("board", board);
+		
+		// -----------------------------------------------------
+		// 댓글 목록 불러오기
+		// Service 객체의 getTinyReplyBoardList() 메서드를 호출하여 댓글 목록 조회
+		// => 파라미터 : 글번호    리턴타입 : List<TinyReplyBoardVO>(tinyReplyBoardList)
+		List<TinyReplyBoardVO> tinyReplyBoardList = service.getTinyReplyBoardList(board_num);
+		model.addAttribute("tinyReplyBoardList", tinyReplyBoardList);
+		System.out.println(tinyReplyBoardList);
+		// -----------------------------------------------------
 		
 		return "board/board_view";
 	}
@@ -572,6 +631,60 @@ public class BoardController {
 			return "redirect:/BoardList.bo";
 		} else { // 실패
 			model.addAttribute("msg", "답글 쓰기 실패!");
+			return "fail_back";
+		}
+		
+	}
+	
+	@PostMapping("/BoardTinyReplyWrite.bo")
+	public String tinyReplyWrite(TinyReplyBoardVO board, Model model) {
+//		System.out.println(board);
+		
+		// BoardService - registTinyReplyBoard() 메서드를 호출하여 댓글 등록 작업 요청
+		// => 파라미터 : TinyReplyBoardVO 객체    리턴타입 : int(insertCount)
+		int insertCount = service.registTinyReplyBoard(board);
+		
+		// 게시물 등록 작업 결과 판별
+		if(insertCount > 0) { // 성공
+			return "redirect:/BoardDetail.bo?board_num=" + board.getBoard_num();
+		} else { // 실패
+			model.addAttribute("msg", "댓글 쓰기 실패!");
+			return "fail_back";
+		}
+		
+	}
+	
+	@GetMapping("/BoardTinyReplyDelete.bo")
+	public String tinyReplyDelete(TinyReplyBoardVO board, Model model) {
+		System.out.println(board);
+		
+		// BoardService - removeTinyReplyBoard() 메서드를 호출하여 댓글 등록 작업 요청
+		// => 파라미터 : TinyReplyBoardVO 객체    리턴타입 : int(insertCount)
+		int insertCount = service.removeTinyReplyBoard(board);
+		
+		// 댓글 삭제 작업 결과 판별
+		if(insertCount > 0) { // 성공
+			return "redirect:/BoardDetail.bo?board_num=" + board.getBoard_num();
+		} else { // 실패
+			model.addAttribute("msg", "댓글 삭제 실패!");
+			return "fail_back";
+		}
+		
+	}
+	
+	@PostMapping("/BoardTinyReReplyWrite.bo")
+	public String tinyReReplyWrite(TinyReplyBoardVO board, Model model) {
+//		System.out.println(board);
+		
+		// BoardService - registTinyReReplyBoard() 메서드를 호출하여 대댓글 등록 작업 요청
+		// => 파라미터 : TinyReplyBoardVO 객체    리턴타입 : int(insertCount)
+		int insertCount = service.registTinyReReplyBoard(board);
+		
+		// 게시물 등록 작업 결과 판별
+		if(insertCount > 0) { // 성공
+			return "redirect:/BoardDetail.bo?board_num=" + board.getBoard_num();
+		} else { // 실패
+			model.addAttribute("msg", "댓글 쓰기 실패!");
 			return "fail_back";
 		}
 		
