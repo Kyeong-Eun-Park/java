@@ -98,8 +98,20 @@
 				<tr>
 					<th class="td_left">계좌정보</th>
 					<td class="td_right">
-						<input type="button" value="인증하기" id="btnAccountAuth">
-						(계좌 인증 과정이 필요합니다.)
+						<%-- 
+						계좌 인증을 수행하지 않은 경우 인증하기 버튼 표시하고
+						아니면, 계좌관리 버튼(bank_userInfo 서블릿 요청) 표시
+						--%>
+						<c:choose>
+							<c:when test="${member.account_auth_status eq 'N' }">
+								<input type="button" value="인증하기" id="btnAccountAuth">
+								(계좌 인증 과정이 필요합니다.)
+							</c:when>
+							<c:otherwise>
+								<input type="button" value="계좌관리" 
+										onclick="location.href='bank_userInfo'">
+							</c:otherwise>
+						</c:choose>
 					</td>
 				</tr>
 				<tr>
