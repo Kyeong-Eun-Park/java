@@ -20,11 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--    Second 클래스 등록    -->
-        <activity android:name=".Second" android:label="두번째 액티비티"></activity>
-        <!--    Third 클래스 등록    -->
-        <activity android:name=".Third" android:label="세번째 액티비티"></activity>
+        <!-- Second 클래스 등록 -->
+        <activity android:name=".Second" android:label="두번째 액티비티"/>
+        <!-- Third 클래스 등록 -->
+        <activity android:name=".Third" android:label="세번째 액티비티"/>
     </application>
 
 </manifest>

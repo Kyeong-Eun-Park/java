@@ -5,10 +5,10 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btnReturn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/btnReturn"
         android:text="돌아가기"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
 </LinearLayout>

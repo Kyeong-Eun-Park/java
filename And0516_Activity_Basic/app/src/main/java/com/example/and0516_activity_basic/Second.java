@@ -8,10 +8,9 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-// AppCompatActivity 상속필수!
+// AppCompatActivity 상속 필수!
 public class Second extends AppCompatActivity {
     // protected onCreate() 메서드 오버라이딩 필수!
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +32,6 @@ public class Second extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

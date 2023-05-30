@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // onCreateContextMenu() 메서드를 오버라이딩하여 해당 위젯에 메뉴 표시
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -45,28 +44,31 @@ public class MainActivity extends AppCompatActivity {
         if(v == btn1){
             menuInflater.inflate(R.menu.menu1, menu);
             menu.setHeaderTitle("배경색 선택");
-        } else if(v == btn2){
+        } else if(v == btn2){ // v.getId() == R.id.btn2
             menuInflater.inflate(R.menu.menu2, menu);
             menu.setHeaderTitle("이미지 작업 선택");
         }
 
     }
 
+    // onContextItemSelected() 메서드를 오버라이딩하여 선택된 메뉴에 대한 작업 수행
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        return super.onContextItemSelected(item);
+        super.onContextItemSelected(item);
 
-        switch (item.getItemId()) {
+        switch (item.getItemId()){
             case R.id.itemRed: baseLayout.setBackgroundColor(Color.RED); break;
             case R.id.itemGreen: baseLayout.setBackgroundColor(Color.GREEN); break;
             case R.id.itemBlue: baseLayout.setBackgroundColor(Color.BLUE); break;
-            case R.id.itemRotate: iv.setRotation(iv.getRotation() + 30); break;
-            case R.id.itemExpand: iv.setScaleX(iv.getScaleX() + 1); iv.setScaleY(iv.getScaleY() + 1); break;
-
-
+            case R.id.itemRotate:
+                iv.setRotation(iv.getRotation() + 30);
+                break;
+            case R.id.itemExpand:
+                iv.setScaleX(iv.getScaleX() + 1);
+                iv.setScaleY(iv.getScaleY() + 1);
+                break;
         }
+
         return true;
     }
 }
-
-

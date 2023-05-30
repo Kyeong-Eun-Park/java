@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,21 +15,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RadioGroup rGroup = findViewById(R.id.rGroup);
         Button btnNewActivity = findViewById(R.id.btnNewActivity);
-        RadioButton btnSecond = findViewById(R.id.btnSecond);
-        RadioButton btnThird = findViewById(R.id.btnThird);
-
         btnNewActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class cl = null;
-
-                if(btnSecond.isChecked()) cl = Second.class;
-                else if(btnThird.isChecked()) cl = Third.class;
-
-                Intent intent = new Intent(MainActivity.this, cl);
+                Class cls = null;
+                switch (rGroup.getCheckedRadioButtonId()){
+                    case R.id.rbSecond: cls = Second.class; break;
+                    case R.id.rbThird:  cls = Third.class;  break;
+                }
+                Intent intent = new Intent(MainActivity.this, cls);
                 startActivity(intent);
-
             }
         });
     }

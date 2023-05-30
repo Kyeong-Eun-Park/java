@@ -12,7 +12,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Uri uri = null;
                 Intent intent = null;
-
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.btnDial:
-                        // 전화번호 입력을 위한 파라미터로 "tel:전화번호" 형식의 문자열 전달
-                        uri = Uri.parse("tel:01000000000");
+                        // 전화번호 입력을 위한 파라미터로 "tel:전화번호" 형식의 문자열을 전달
+                        uri = Uri.parse("tel:01012345678");
                         intent = new Intent(Intent.ACTION_DIAL, uri);
                         startActivity(intent);
                         break;
@@ -45,17 +43,18 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.btnGoogle:
-                        // https://www.google.co.kr/maps/place/Sahara+Desert/@
-                        // 21.8990909 위도 ,11.4751897 경도
-                        uri = Uri.parse("http://maps.google.com/maps?q=21.8990909,11.4751897");
+                        // https://www.google.co.kr/maps/place
+                        // 35.1584043 (위도), 129.0620349 (경도)
+                        uri = Uri.parse("http://maps.google.com/maps?q=35.1584043,129.0620349");
                         intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
                         break;
+
                     case R.id.btnSearch:
-                        // Intent 객체 생성 시 ACTION_WEB_SEARCH 상수 전달(Uri 객체 없음)
+                        // Intent 객체 생성 시 ACTION_WEB_SEARCH 상수 전달 (Uri 객체 없음)
                         intent = new Intent(Intent.ACTION_WEB_SEARCH);
-                        // intentt 객체에 putExtra() 메서드를 호출하여 검색을 위한 키와 검색어 전달
-                        // => 검색을 위한 키 값은 SearchManager.QUERY 상수 사용
+                        // intent 객체에 putExtra() 메서드를 호출하여 검색을 위한 키와 검색어 전달
+                        // => 검색을 위한 키값은 SearchManager.QUERY 상수 사용(문자열 "query")
 //                        intent.putExtra(SearchManager.QUERY, "아이티윌");
                         intent.putExtra("query", "아이티윌");
                         startActivity(intent);
@@ -65,16 +64,18 @@ public class MainActivity extends AppCompatActivity {
                         // intent 객체의 putExtra() 메서드를 호출하여 문자 메세지 내용 저장
                         // => 키값으로 "sms_body" 문자열 전달
                         intent.putExtra("sms_body", "안녕하세요");
-                        // intent객체의 setData() 메서드를 호출하여 문자 메세지를 전송할 번호 저장
-                        uri = Uri.parse("smsto:01000000000");
+
+                        // intent 객체의 setData() 메서드를 호출하여 문자 메세지를 전송할 번호 저장
+                        uri = Uri.parse("smsto:01012345678");
                         intent.setData(uri);
                         startActivity(intent);
                         break;
                     case R.id.btnPhoto:
-                        // Intent 객체 생성 시 MediaStore.ACTION_IMAGE_CAPTURE 상수 전달(Uri 객체 없음)
-                        new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        // Intent 객체 생성 시 MediaStore.ACTION_IMAGE_CAPTURE 상수 전달 (Uri 객체 없음)
+                        intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivity(intent);
                         break;
+
                 }
             }
         };

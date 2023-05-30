@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnNewActivity"
         android:text="새 액티비티(화면) 열기"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp"/>
+
 
 </LinearLayout>

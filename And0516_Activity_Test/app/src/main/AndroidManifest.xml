@@ -20,8 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Second" android:label="두번째로"></activity>
-        <activity android:name=".Third" android:label="세번째로"></activity>
+        <activity android:name=".Second"/>
+        <activity android:name=".Third"/>
     </application>
-
 </manifest>
