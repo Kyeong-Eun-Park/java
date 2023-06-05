@@ -6,26 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:padding="10dp">
+    >
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etUrl"
-        android:hint="접속할 URL 입력"/>
+        android:singleLine="true"
+        android:hint="접속할 URL 입력"
+        />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnRequest"
         android:text="요청하기"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        />
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/tvResult"
-        android:background="#AAAAAA"/>
-
+        android:id="@+id/movieListView"
+        />
 
 </LinearLayout>

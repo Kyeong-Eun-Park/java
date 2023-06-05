@@ -13,8 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.And0530_HttpURLConnection"
         tools:targetApi="31"
-        android:usesCleartextTraffic="true"
-        >
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:exported="true">

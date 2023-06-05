@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvResult;
 
     // 요청(Request) 객체를 저장할 RequestQueue 타입 변수 선언
-    static RequestQueue requestQueue; // 한 번 생성 후 재사용하기 위해 static변수 선언
+    static RequestQueue requestQueue;   // 한 번 생성 후 재사용하기 위해 static 변수 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,39 +42,41 @@ public class MainActivity extends AppCompatActivity {
         // 요청큐가 비어있을 경우 생성
         // Volley.newRequestQueue() 메서드를 호출하여 현재 액티비티(컨텍스트) 전달
         if(requestQueue == null) requestQueue = Volley.newRequestQueue(this);
+
     } // onCreate() 메서드 끝
 
-    public void makeRequest() {
-//        String strUrl = etUrl.getText().toString();
-        String strUrl = "http://10.0.0.2:8082/funding/admin/memberList?id=admin&passwd=1234";
-//        strUrl = "http://192.168.6.200:8081/MVC_Board/board/MemberLoginPro.me?id=admin&passwd=1234";
+    public void makeRequest(){
+        String strUrl = etUrl.getText().toString();
+        strUrl = "http://10.0.0.2:8081/MVC_Board/board/MemberLoginPro.me?id=admin&passwd=1234";
+//        strUrl = "http://192.168.3.200:8081/MVC_Board/board/MemberLoginPro.me?id=admin&passwd=1234";
 
-        // StringRequest 객체 생성
+        // StringReuqest 객체 생성
         // 파라미터
         // 1) 요청방식 (Request.Method.XXX 상수 지정)
         // 2) 요청 URL
         // 3) 응답에 대한 리스너 구현 => Response.Listener 의 구현체 전달
-        // => $.ajax() 에서 success : function(){}
+        //    => $.ajax() 에서 success : function(){}
         // 4) 에러에 대한 리스너 구현 => Response.ErrorListener 의 구현체 전달
+        //    => $.ajax() 에서 error : function(){}
         StringRequest request = new StringRequest(
                 Request.Method.GET,
                 strUrl,
                 new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response){
+                    public void onResponse(String response) {
                         showMessage("응답 => " + response);
                     }
                 },
-//            response -> {},
+//                response -> {},   // 람다식 가능
                 new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error){
+                    public void onErrorResponse(VolleyError error) {
                         showMessage("에러 => " + error.getMessage());
                     }
                 }
-        ){ // getParams() 메서드 오버라이딩(POST방식 요청일 경우 구현해야하는 부분)
+        )
+        {  // getParams() 메서드 오버라이딩 (POST 방식 요청일 경우 구현해야하는 부분)
             // => StringRequest 객체 생성자 뒤에 바디 {} 를 구현해야함
-
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -86,16 +88,20 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        // 요청객체 (StringRequest) 생성 완료 후 요청 큐에 추가하기
+        // 요청 객체 (StringRequest) 생성 완료 후 요청큐에 추가하기
         // => RequestQueue 객체의 add() 메서드를 호출하여 요청 객체를 전달
-        // => 만약, 이전 요청의 응답결과를 사용하지 않도록 설정하려면
-        // 요청 객체의 setShouldCache() 메서드 호출하여 false값 전달
+        // => 만약, 이전 요청의 응답 결과를 사용하지 않도록 설정하려면
+        //    요청 객체의 setShouldCache() 메서드 호출하여 false값 전달
         request.setShouldCache(false);
-        requestQueue.add(request);
+        requestQueue.add(request);  // 요청큐에 요청 객체 추가
 
-    } // makeRequest 끝
+
+    }   // makeRequest() 메서드 끝
 
     public void showMessage(String str){
         tvResult.append(str + "\n");
     }
+
+
+
 }
