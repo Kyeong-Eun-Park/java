@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n    <expression enabled\="true" text\="i % 10"/>\r\n    <expression enabled\="true" text\="i % 10 \=\= 3 || i % 10 \=\= 6 || i % 10 \=\= 9"/>\r\n</watchExpressions>\r\n

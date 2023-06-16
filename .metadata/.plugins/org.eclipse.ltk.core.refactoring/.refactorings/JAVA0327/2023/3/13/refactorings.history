@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;swing&apos; to &apos;event_handling&apos;&#x0D;&#x0A;- Original project: &apos;JAVA0327&apos;&#x0D;&#x0A;- Original element: &apos;JAVA0327/src/swing&apos;&#x0D;&#x0A;- Renamed element: &apos;JAVA0327/src/event_handling&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;swing&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;swing" name="event_handling" qualified="false" references="true" stamp="1679893038572" textual="false" version="1.0"/>
+</session>

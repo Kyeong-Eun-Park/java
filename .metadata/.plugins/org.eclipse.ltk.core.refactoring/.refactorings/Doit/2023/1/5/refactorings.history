@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ex01_04.Ex_Q4&apos; to &apos;Ex4_Q4&apos;&#x0D;&#x0A;- Original project: &apos;Doit&apos;&#x0D;&#x0A;- Original element: &apos;ex01_04.Ex_Q4&apos;&#x0D;&#x0A;- Renamed element: &apos;ex01_04.Ex4_Q4&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Ex_Q4&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;ex01_04{Ex_Q4.java[Ex_Q4" matchStrategy="1" name="Ex4_Q4" qualified="false" references="true" similarDeclarations="false" stamp="1675134209209" textual="false" version="1.0"/>
+</session>

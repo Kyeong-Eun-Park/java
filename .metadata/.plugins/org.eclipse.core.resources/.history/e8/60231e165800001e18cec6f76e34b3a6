@@ -1,0 +1,33 @@
+
+public class Ex4 {
+
+	public static void main(String[] args) {
+	}
+
+}
+
+enum Code {
+	승인(0), // Code 승인 = new Code(0) 
+	미승인(1);
+	
+	int code;
+	private Code(int code) {
+		this.code = code;
+	}
+}
+
+class Code2 {
+	public static final Code2 승인 = new Code2(0);
+	public static final Code2 미승인 = new Code2(0);
+	
+	int code;
+	public Code2(int code) {
+		this.code = code;
+	}
+}
+
+
+
+
+
+
