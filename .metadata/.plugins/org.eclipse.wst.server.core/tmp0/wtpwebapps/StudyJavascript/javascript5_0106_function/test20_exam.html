@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 외부 자바스크립트 파일(test20_login.js) 불러오기 -->
+<script type="text/javascript" src="test20_login.js"></script>
+<script type="text/javascript">
+	// 3번 유형 연습 문제
+	// 1) 정수 1개(dan)를 전달받아 해당 정수에 맞는 구구단 출력 - gugudan()
+	//    ex) 2 전달 시 구구단 2단 출력
+	// 함수 정의
+	function gugudan(dan) {
+		document.write(" < " + dan + "단 ><br>");
+		
+		// for문을 사용하여 1 ~ 9 까지 반복
+		for(let i = 1; i <= 9; i++) {
+			document.write(dan + " * " + i + " = " + (dan * i) + "<br>");
+		}
+	}
+	
+	// 함수 호출
+	gugudan(2);
+	document.write("<hr>");
+	// ---------------------------------------------------
+	// 2) 정수 1개(x)를 전달받아 1 ~ x 까지의 합을 계산하여 출력하는 함수 정의 - sum()
+	//    ex) 10 전달 시 1 ~ 10 까지의 합 55 출력
+	// 함수 정의
+	function sum(x) {
+		let total = 0;
+		
+		for(let i = 1; i <= x; i++) {
+			total += i; // 합계 누적
+		}
+		
+		// 합계 출력
+		document.write("1 ~ " + x + " 까지의 합 = " + total);
+		
+	}
+	
+	// 함수 호출
+	sum(10);
+	document.write("<hr>");
+	// ---------------------------------------------------
+	// 3) 정수 2개(dan, target) 를 전달받아 dan ~ target 단까지의 구구단 출력 - gugudan2()
+	//    ex) 2, 9 전달 시 2단 ~ 9단까지의 구구단 출력
+	// 함수 정의
+	function gugudan2(dan, target) {
+		// dan ~ target 까지 반복하면서 각 단의 구구단 출력 반복
+		// => 이미 단(dan)을 전달받았으므로 별도의 초기화가 불필요하여 초기식 생략 가능
+		for(; dan <= target; dan++) { // 조건식과 증감식만으로 for문 사용
+			document.write(" < " + dan + "단 ><br>");
+			
+			// for문을 사용하여 1 ~ 9 까지 반복
+			for(let i = 1; i <= 9; i++) {
+				document.write(dan + " * " + i + " = " + (dan * i) + "<br>");
+			}
+			
+			document.write("<br>");
+		}
+	}
+	
+	// 함수 호출
+	gugudan2(2, 5); // 2 ~ 5단까지 구구단 출력
+	document.write("<hr>");
+	
+	// ===================================================================================
+	// test20_login.js 파일에 있는 login() 함수를 호출하여 로그인 가능 여부 판별 작업 수행
+	// => 파라미터로 전달할 데이터 : 아이디(id), 패스워드(passwd) => 문자열
+	login("admin", "12345");
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

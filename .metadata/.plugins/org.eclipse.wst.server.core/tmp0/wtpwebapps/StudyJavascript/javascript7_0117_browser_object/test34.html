@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* 	#rect { */
+/* 		color: red; */
+/* 		font-weight: bold; */
+/* 	} */
+</style>
+</head>
+<body>
+	<div id="div">DIV</div>
+	<script type="text/javascript">
+		// div 영역(id="div") 요소 선택해서 변수 myDiv 에 저장
+		let myDiv = document.querySelector("#div");
+		
+		// div 영역(id="div") 요소에서 "mouseover" 이벤트 발생 시 수행할 익명 함수 정의
+		myDiv.addEventListener("mouseover", function() {
+// 			console.log("mouseover");
+			// 대상 요소(텍스트) 의 CSS 속성 중 color 속성(글자색)을 "red" 로 변경
+			myDiv.style.color = "red";
+			// 대상 요소(텍스트) 을 CSS 속성 중 font-weight 속성(글자 굵기)를 "bold" 로 변경
+			// => 대상 요소는 변수에 저장된 대상을 지정해도 되지만
+			//    이벤트 핸들러 내에서 이벤트 발생한 대상을 this 로 지정도 가능
+			this.style.fontWeight = "bold";
+		});
+		
+		// div 영역(id="div") 요소에서 "mouseout" 이벤트 발생 시 수행할 익명 함수 정의
+		myDiv.addEventListener("mouseout", function() {
+// 			console.log("mouseout");
+			// 대상 요소(텍스트) 의 CSS 속성 중 color 속성(글자색)을 "" 로 변경
+			// 대상 요소(텍스트) 을 CSS 속성 중 font-weight 속성(글자 굵기)를 "" 로 변경
+			// => 속성값을 널스트링으로 변경 시 기본 속성으로 돌아감
+			this.style.color = "";
+			this.style.fontWeight = "";
+		});
+		
+		
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <script></script> 태그 사이에 자바스크립트 코드 기술 -->
+<script type="text/javascript">
+	// 이 주석은 자바스크립트 한 줄 주석입니다.
+	/*
+	이 주석은 자바스크립트
+	여러 줄 주석입니다.
+	*/
+	
+	/*
+	[ 자바스크립트 변수 ]
+	- 변수 선언 기본 문법 : 데이터타입 변수명 = 값; (선언문과 초기화 문장 분리도 가능)
+	- 다만, 자바와 달리 데이터타입을 별도로 지정하지 않고 var 또는 let 또는 const 로 선언함
+	  (세 가지는 각각의 특징이 있음)
+	- 변수명은 자바 식별자 작성 규칙과 거의 동일한 규칙 적용됨
+	- 문자(= 문자열, string), 숫자(number), 논리(boolean), 특수값 undefined, null 사용
+	  => 변수 선언 및 값 할당하면 자동으로 해당 변수의 타입이 결정됨
+	*/
+	
+	// 변수 선언 기초
+// 	var num;
+// 	let num2;
+// 	const num3; // 오류 발생하지만 나중에 배움
+
+	// 변수 선언 및 다양한 데이터 저장
+// 	var str; // 변수 str 선언
+// 	str = "자바스크립트"; // 변수 str 에 문자(문자열) "자바스크립트" 저장
+	// => 이 때, 변수 str 의 데이터타입이 string 타입으로 변경됨
+	// 위의 두 문장을 한 문장으로 결합
+	var str = "자바스크립트";
+	var num = 100.5; // 숫자 데이터 저장 시 정수, 실수 구분없이 number 타입으로 취급됨
+	var b = true; // 논리값(true 또는 false) 저장 시 boolean 타입으로 취급됨
+	
+	// 주의! 특수한 타입
+	var v1; // 변수 선언 시 아무 데이터도 저장(할당)하지 않을 경우 undefined 타입으로 취급됨
+	var v2 = null; // 특수한 값인 null 값 저장도 가능
+	
+	// 특정 변수의 데이터타입 확인 방법 : typeof 키워드 사용
+	// => 기본 문법 1. : typeof 변수명 또는 typeof 데이터
+	//    기본 문법 2. : typeof(변수명) 또는 typeof(데이터)
+// 	alert(str + " : " + typeof(str)); // 알림창에 출력 내용 표시됨(자바스크립트 : string 출력)
+// 	console.log(str + " : " + typeof(str)); // 개발자 도구 - console 창에 출력 내용 표시됨
+	document.write(str + " : " + typeof(str) + "<br>"); // 웹브라우저 화면에 표시됨
+	
+	document.write(num + " : " + typeof(num) + "<br>"); // 100.5 : number
+	document.write(b + " : " + typeof(b) + "<br>");     // true : boolean
+	document.write(v1 + " : " + typeof(v1) + "<br>");   // undefined : undefined
+	document.write(v2 + " : " + typeof(v2) + "<br>");   // null : object
+	// ==============================================================================
+	// 변수 사용 연습
+	// 변수 data 선언 및 100 으로 초기화 후 데이터 및 데이터타입 출력
+	var data = 100;
+	document.write(data + " : " + typeof(data) + "<br>"); // 100 : number
+	
+	// 변수 data2 선언 및 "Hello, World!" 로 초기화 후 데이터 및 데이터타입 출력
+	var data2 = "Hello, World!"; 
+	document.write(data2 + " : " + typeof(data2) + "<br>"); // Hello, World! : string
+	
+	// 변수 선언 시 var 대신 let 사용 가능(기본 문법은 let 과 동일하나 성격이 다름)
+	let data3 = "Hello, World!";
+	document.write(data3 + " : " + typeof(data3) + "<br>"); // Hello, World! : string
+	
+	var data4; // 변수에 데이터 저장하지 않으면 undefined 값과 undefined 타입으로 설정됨
+	document.write(data4 + " : " + typeof(data4) + "<br>");
+	// 만약, 변수에 다른 타입의 값을 저장하면 데이터타입이 새로운 데이터의 타입으로 변경됨
+	data4 = 50; // number 타입으로 변경됨
+	document.write(data4 + " : " + typeof(data4) + "<br>");
+	data4 = false; // boolean 타입으로 변경됨
+	document.write(data4 + " : " + typeof(data4) + "<br>");
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+127.0.0.1 - - [06/Mar/2023:16:01:28 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:16:01:29 +0900] "GET /StudyJSP/jsp10_regular_expression/join_form.jsp HTTP/1.1" 200 12970
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:16:01:29 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:16:03:27 +0900] "GET /StudyJSP/jsp10_regular_expression/join_form.jsp HTTP/1.1" 200 12983
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:16:03:27 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:16:03:46 +0900] "GET /StudyJSP/jsp10_regular_expression/join_form.jsp HTTP/1.1" 200 12983
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:16:03:46 +0900] "GET /favicon.ico HTTP/1.1" 404 818

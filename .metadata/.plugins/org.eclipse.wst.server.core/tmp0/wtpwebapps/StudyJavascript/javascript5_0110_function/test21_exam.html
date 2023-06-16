@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="test21_login.js"></script>
+<script type="text/javascript">
+	// 4. 매개변수도 있고, 리턴값도 있는 함수 연습
+	
+	// 1) 정수 2개(num1, num2)를 전달받아 두 수의 합을 리턴하는 함수 sum() 정의
+	// 함수 정의
+	function sum(num1, num2) {
+		document.write("num1 = " + num1 + ", num2 = " + num2 + "<br>");
+		return num1 + num2;
+	}
+	
+	// 함수 호출
+	// => sum() 함수를 호출하여 정수 10, 20 을 전달한 뒤 리턴되는 리턴값(30)을 받아 출력
+	let total = sum(10, 20);
+	document.write("합계 = " + total);
+	document.write("<hr>");
+	
+	// 2) 정수 1개(num)를 전달받아 1 ~ num 까지의 합을 계산 후 리턴 함수 sum2() 정의
+	// 함수 정의
+	function sum2(num) {
+		let total = 0;
+		
+		for(let i = 1; i <= num; i++) {
+			total += i;
+		}
+		
+		return total;
+	}
+	
+	// 함수 호출
+	let total2 = sum2(100);
+	document.write("total2 = " + total2);
+	document.write("<hr>");
+	
+	// 2) 정수 1개(num)를 전달받아 5의 배수인지 판별하고, 결과 리턴하는 함수 check() 정의
+	// => 리턴 결과값 : 5의 배수일 경우 "5의 배수!", 아니면 "5의 배수가 아님!" 
+	// => 참고. 5의 배수란? 5로 나누었을 때 나머지가 0 인 수
+	// 함수 정의
+	function check(num) {
+		// if 문과 else 문을 조합하여 각각의 경우 별도의 return 문을 사용하는 방법
+// 		if(num % 5 == 0) {
+// 			return num + " : 5의 배수!";
+// 		} else {
+// 			return num + " : 5의 배수가 아님!";
+// 		}
+		
+		// 리턴할 문자열을 if 문과 else 문에서 생성한 후 
+		// 하나의 return 문으로 리턴하는 방법
+		let result = "";
+		
+		if(num % 5 == 0) {
+			result = num + " : 5의 배수!";
+		} else {
+			result = num + " : 5의 배수가 아님!";
+		}
+		
+		return result;
+	}
+	
+	// 함수 호출
+	document.write(check(100));
+	document.write("<hr>");
+	// =================================================================
+	// 외부 자바스크립트 파일(test21_login.js)의 login() 함수를 호출하여
+	// 아이디, 패스워드를 전달한 후 로그인 판별 결과를 리턴받아 출력하기
+	let result = login("admin1", "12345");
+	document.write("로그인 결과 : " + result);
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

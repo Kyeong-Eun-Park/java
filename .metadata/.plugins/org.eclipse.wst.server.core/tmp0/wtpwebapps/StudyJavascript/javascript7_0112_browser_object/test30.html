@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	location 객체
+	- 페이지 주소 관련 정보를 관리하는 객체(= 페이지 이동 관련 작업 담당)
+	- window 객체의 하위 객체이므로 window.location 형식으로 접근하지만
+	  보통 window 객체명은 생략하고 location.xxx 형식으로 사용
+	- 주소 처리 관련 속성(변수) 및 메서드가 제공됨
+	  => location 객체의 href 변수(속성)가 URL 정보 관리하는 대표적인 변수
+	*/
+	function func1() {
+		// 현재 웹브라우저 주소표시줄의 주소(URL) 정보 확인을 위해
+		// location 객체의 href 속성값 확인
+		alert(location.href);
+		// http://localhost:8080/StudyJavascript/javascript7_0112_browser_object/test30.html
+    }
+	  
+	function func2() {
+		// URL 정보 변경 위해 location 객체의 href 속성값 변경
+		// => 변경 시 변경된 주소로 새로운 요청이 발생 = 새로운 주소로 이동
+// 		location.href = "test29.html"; // test29.html 파일(페이지)로 이동
+		
+		// 네이버 홈페이지로 이동
+		// => 주의! 다른 웹사이트 주소 지정 시 반드시 http:// 를 붙여서 지정해야한다!
+		//    그렇지 않으면, 상대주소로 사용되어 기존 주소 뒤의 파일명(주소)부분만 교체됨
+// 		location.href = "www.naver.com"; // 네이버 페이지가 열리지 않음
+		location.href = "http://www.naver.com"; // 절대 주소처럼 사용되어 네이버 페이지 열림
+    }
+	
+	function func3() {
+		  // URL 정보 새로고침을 위해 location 객체의 reload() 메서드 호출
+		  // => 주소표시줄의 URL 에 해당하는 페이지를 다시 로딩
+		  //    = 웹브라우저의 페이지 새로고침(F5)과 동일
+		  location.reload();
+		  // => 텍스트 상자에 입력되어 있던 텍스트는 새로고침 시 없어짐(초기 상태로 돌아감)
+    }
+	
+	function func4(target) {
+		// if문을 사용하여 전달받은 문자열을 비교 후 각각의 페이지로 이동
+		// ex) 전달받은 문자열 target 이 "cart" 일 경우 test30_cart.html 페이지로 이동하고
+		//     target 이 "order" 일 경우 test30_order.html 페이지로 이동하기
+// 		if(target == "cart") {
+// 			location.href = "test30_cart.html";
+// 		} else if(target == "order") {
+// 			location.href = "test30_order.html";
+// 		}
+		
+		// 문자열 결합 기능을 활용하여 페이지명 중 일부를 target 변수로 대체 가능
+		// => cart 또는 order 부분을 target 변수로 사용하여 문자열 결합
+		location.href = "test30_" + target + ".html";
+	}
+</script>
+</head>
+<body>
+	<h1>test30.html - location 객체</h1>
+	<input type="button" value="URL 정보 출력" onclick="func1()">
+	<input type="button" value="URL 정보 변경" onclick="func2()">
+	<input type="button" value="URL 새로고침" onclick="func3()">
+	<input type="text"> <!-- 새로고침 확인용 텍스트 입력 창 -->
+	<hr>
+	<input type="button" value="즉시구매" onclick="func4('order')">
+	<input type="button" value="장바구니담기" onclick="func4('cart')">
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

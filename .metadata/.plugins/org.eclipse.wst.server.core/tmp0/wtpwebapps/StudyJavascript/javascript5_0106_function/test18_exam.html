@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 파라미터도 없고, 리턴값도 없는 함수 연습
+	// -------------------------------------------------------------------------
+	// 1) "함수 호출됨!" 문자열을 출력하는 showMessage() 함수 정의
+	function showMessage() {
+		document.write("함수 호출됨!");
+		
+		hr();
+	}
+	
+	// 2) <hr> 태그를 출력하는 hr() 함수 정의
+	function hr() {
+		document.write("<hr>");
+	}
+	
+	// 3) printNum() 함수 정의
+	// => 1 ~ 10 까지 정수를 반복문(for)으로 출력
+	function printNum() {
+		for(let i = 1; i <= 10; i++) {
+			document.write(i + " ");
+		}		
+		
+		hr();
+	}
+	
+	// 4) sum() 함수 정의
+	// => 1 ~ 10 까지의 합을 반복문(for)으로 계산하여 결과값(55) 출력
+	function sum() {
+		let total = 0; // 합계 누적 변수
+		
+		for(let i = 1; i <= 10; i++) {
+			total += i;
+		}
+		
+		document.write("1 ~ 10 까지의 합 = " + total);
+		
+		hr();
+	}
+	// -------------------------------------------------------------------------
+	// 1) showMessage() 함수 호출
+	showMessage();
+	
+	// 2) printNum() 함수 호출
+	printNum();
+	printNum(); // 함수를 호출할 때마다 동일한 코드가 반복 실행되므로
+	printNum(); // 함수 재사용을 통해 중복되는 코드 작성을 줄일 수 있다!
+	
+	// 3) sum() 함수 호출
+	sum();
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

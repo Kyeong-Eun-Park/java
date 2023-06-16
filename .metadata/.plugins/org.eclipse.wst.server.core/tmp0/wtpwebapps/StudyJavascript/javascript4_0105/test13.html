@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	do ~ while 문
+	- while 문은 조건을 먼저 판별 후 반복 여부를 결정하므로 
+	  조건에 따라 반복문이 단 한 번도 실행되지 않을 수 있지만,
+	  do ~ while 문은 조건을 나중에 판별하므로
+	  조건과 상관없이 최소 한 번의 반복문 실행이 보장됨
+	
+	< 기본 문법 >
+	do {
+		// 반복 실행할 문장들...
+	} while(조건식);
+	*/
+	
+	// while 문을 사용하여 정수 1개를 입력받아 1 ~ num 까지 정수 출력
+// 	let num = prompt("정수 입력");
+// 	alert(num);
+// 	let i = 1;
+// 	while(i <= num) { // 만약, 1보다 작은 수를 입력하면 반복문 실행이 되지 않는다!
+// 		document.write(i + " ");
+// 		i++;
+// 	}
+	
+// 	document.write("<br>while 문 종료!");
+// 	document.write("<hr>");
+	
+	// do ~ while 일 경우
+// 	i = 1;
+// 	do {
+// 		document.write(i + " ");
+// 		i++;
+// 	} while(i <= num);
+	
+// 	document.write("<br>do ~ while 문 종료!");
+// 	// => 1보다 작은 수를 입력하더라도 조건을 나중에 판별하므로
+// 	//    일단 블록문 내의 문장을 실행하여 i = 1 일 때 i 값을 출력하고
+// 	//    그 다음 while 문으로 조건 판별을 수행하여 false 이므로 반복 종료됨
+
+	// ==========================================================================
+	// n!(n 팩토리얼) 계산
+	// => 팩토리얼(Factorial) 이란? 1 ~ n 까지 정수의 곱 누적
+	let n = prompt("숫자를 입력하세요");
+	let msg = ""; // 출력할 메세지를 저장할 변수
+	
+	if(n != null && n != "") { // 숫자 미입력("") 또는 취소 버튼을 클릭(null)했는지 확인
+		// 팩토리얼 계산
+		let nFact = 1; // 팩토리얼 계산값을 누적할 변수(곱셈의 누적이므로 1로 초기화)
+		let i = 1; // 팩토리얼을 계산하기 위해 곱해지는 값(1씩 증가)
+		
+		while(i <= n) { // 1 ~ n 까지 반복하기 위한 조건
+			nFact *= i; // 팩토리얼 계산
+			i++;
+		}
+		
+		msg = n + "! = " + nFact;
+	} else {
+		msg = "값을 입력하지 않았습니다";
+	}
+	
+	document.write(msg);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

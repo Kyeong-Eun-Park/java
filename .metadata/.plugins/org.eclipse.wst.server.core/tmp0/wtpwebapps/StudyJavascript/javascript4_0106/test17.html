@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table, td {
+		border: 1px solid gray;
+		border-collapse: collapse;
+	}
+</style>
+</head>
+<body>
+	<script type="text/javascript">
+		let memberCount = prompt("전체 인원 입력");
+		let colCount = prompt("한 줄에 앉을 인원 입력");
+		
+// 		for(let i = 1; i <= memberCount; i++) {
+// 			document.write("좌석" + i + " ");
+			
+// 			if(i % colCount == 0) {
+// 				document.write("<br>");
+// 			}
+// 		}
+
+		// 줄 수 계산 = 전체 인원 / 한 줄 당 인원
+		// => 전체 인원을 한 줄 당 인원으로 나눈 나머지가 0보다 크면 1줄 추가
+		// => 단, 자바스크립트의 경우 연산 결과가 실수일 때 실수 데이터 그대로 사용하므로
+		//    정수화를 수행하기 위해서는 parseInt(실수데이터) 형태로 지정
+		// 1) 삼항연산자 사용 시
+// 		let rowCount = parseInt(memberCount / colCount) + (memberCount % colCount > 0 ? 1 : 0);
+		
+		// 2) if 문 사용 시
+		let rowCount = parseInt(memberCount / colCount)
+		
+		if(memberCount % colCount > 0) {
+			rowCount++;
+		}
+		
+		// 중첩 for문을 사용하여 행 반복과 열 반복을 통해 좌석번호 출력
+		let seatNo = 1; // 좌석번호
+		
+		// --------------------------------------------------------
+		// 좌석번호를 단순하게 출력만 할 경우
+// 		for(let i = 1; i <= rowCount; i++) { // 행 반복(라인 번호)
+// 			document.write(i + "번 라인 : ");
+			
+// 			// 안쪽 for문을 사용하여 열 반복(좌석 번호)
+// 			for(let j = 1; j <= colCount; j++) {
+// 				document.write(seatNo + "번좌석 ");
+				
+// 				// 만약, 전체 인원 수(memberCount)가 좌석번호(seatNo)와 같을 경우
+// 				// 현재 반복문을 모두 종료 후 빠져나감
+// 				if(memberCount == seatNo) {
+// 					break; // 가장 가까운 for문을 빠져나가므로 안쪽 for문이 종료됨
+// 				}
+				
+// 				// 좌석번호 1 증가
+// 				seatNo++;
+// 			}
+			
+// 			// 안쪽 for문에서 break 문을 만날 경우 이동하는 위치
+// 			// 라인 변경으로 인해 줄바꿈 수행할 위치
+// 			document.write("<br>");
+// 			document.write("<hr>");
+			
+// 		}
+		// --------------------------------------------------------
+		// 테이블을 사용하여 좌석을 배치할 경우
+		document.write("<h1>좌석 배치도</h1>");
+		// 전체 테이블을 감싸는 <table> 태그는 반복문 밖에서 기술
+		document.write("<table>");
+		for(let i = 1; i <= rowCount; i++) { // 행 반복(라인 번호)
+			document.write("<tr>"); // 행 생성
+			
+			// 안쪽 for문을 사용하여 열 반복(좌석 번호)
+			for(let j = 1; j <= colCount; j++) {
+				document.write("<td>" + "좌석" + seatNo + "</td>"); // 열 생성
+				
+				// 만약, 전체 인원 수(memberCount)가 좌석번호(seatNo)와 같을 경우
+				// 현재 반복문을 모두 종료 후 빠져나감
+				if(memberCount == seatNo) {
+					break; // 가장 가까운 for문을 빠져나가므로 안쪽 for문이 종료됨
+				}
+				
+				// 좌석번호 1 증가
+				seatNo++;
+			}
+			
+			// 안쪽 for문에서 break 문을 만날 경우 이동하는 위치
+			// 라인 변경으로 인해 줄바꿈 수행할 위치(= 행이 끝나는 위치)
+			document.write("</tr>");
+			
+		}
+	
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

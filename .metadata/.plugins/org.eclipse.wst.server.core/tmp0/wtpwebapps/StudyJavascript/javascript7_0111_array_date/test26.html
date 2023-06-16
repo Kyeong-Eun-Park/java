@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// Array 객체에서 제공하는 다양한 메서드
+	// => 객체를 통해서만 호출 가능한 함수를 메서드(method) 라고 함
+	let arrNum = [1, 2, 3];
+	let arrStr = ["a", "b", "c", "d"];
+	
+	// 1. concat() : 배열 합치기
+	// => 기본 사용법 : 배열명.concat(합쳐질배열명);
+	// => 기준이 되는 배열의 뒤에 합쳐질 배열이 결합된 새로운 배열이 생성됨
+	// => 결과가 저장된 변수의 타입을 확인하면 object 가 출력됨(배열은 객체이므로)
+	let arrNumStr = arrNum.concat(arrStr);
+	document.write("arrNum.concat(arrStr) : " + arrNumStr + ", 타입 : " + typeof(arrNumStr) + "<br>"); // 1,2,3,a,b,c,d
+	
+	let arrStrNum = arrStr.concat(arrNum);
+	document.write("arrStr.concat(arrNum) : " + arrStrNum + ", 타입 : " + typeof(arrStrNum) + "<br>"); // a,b,c,d,1,2,3
+	
+	document.write("<hr>");
+	
+	// 2. join() : 배열 내의 요소들을 결합하여 문자열로 리턴하기
+	// => 기본 사용법 : 배열명.join() 또는 배열명.join("구분자")
+	// => 구분자를 지정하지 않으면 요소들끼리 콤마(,)로 구분하여 문자열을 생성하고
+	//    구분자를 지정하면 요소들 사이에 구분자를 사용하여 문자열을 생성함
+	// => 결과가 저장된 변수의 타입을 확인하면 string 이 출력됨(문자열)
+	let strJoin1 = arrNum.join(); // 요소끼리 콤마(,)로 구분됨
+	document.write("arrNum.join() : " + strJoin1 + ", 타입 : " + typeof(strJoin1) + "<br>");
+	
+	let strJoin2 = arrNum.join("/"); // 요소끼리 슬래시(/)로 구분됨
+	document.write("arrNum.join(/) : " + strJoin2 + ", 타입 : " + typeof(strJoin2) + "<br>");
+	
+	document.write("<hr>");
+	
+	// 3. push() : 배열 내에서 맨 마지막에 새로운 요소 추가
+	//    unshift() : 배열 내에서 맨 처음에 새로운 요소 추가
+	// => 두 메서드 모두 해당 배열을 직접 변경함(새로운 배열이 생성되지 않음)
+	let arrNumSize = arrNum.push(4, 5); // 기존 배열 맨 뒤에 4 와 5 추가(배열 크기 5 리턴됨)
+	document.write("arrNum 배열 요소 : " + arrNum + ", 크기 : " + arrNumSize + "<br>"); // 1,2,3,4,5 와 크기 5 출력됨
+
+	let arrNumSize2 = arrNum.unshift(0); // 기존 배열 맨 앞에 0 추가(배열 크기 6 리턴됨)
+	document.write("arrNum 배열 요소 : " + arrNum + ", 크기 : " + arrNumSize2 + "<br>"); // 0,1,2,3,4,5 와 크기 6 출력됨
+	
+	document.write("<hr>");
+	
+	// 4. pop() : 배열의 마지막 요소 꺼내서 리턴
+	//    shift() : 배열의 첫 요소 꺼내서 리턴
+	// => 두 메서드 모두 해당 배열에서 값을 실제로 꺼내므로 저장된 데이터는 제거됨
+	let popResult = arrNum.pop();
+	document.write("pop() 호출 후 arrNum 배열 : " + arrNum + ", 리턴값 : " + popResult + "<br>");
+	
+	let shiftResult = arrNum.shift();
+	document.write("shift() 호출 후 arrNum 배열 : " + arrNum + ", 리턴값 : " + shiftResult + "<br>");
+	
+	document.write("<hr>");
+	
+	// 5. splice() : 특정 위치에 요소를 추가하거나 삭제
+	// => splice(정수) : 해당 인덱스부터 마지막 인덱스까지 요소 삭제 후 삭제된 배열 리턴
+	// => splice(정수, 정수) : 첫번째 정수 인덱스부터 두번째 정수만큼의 요소 삭제 후 삭제된 배열 리턴
+	// => splice(정수, 정수, 정수...) : 첫번째는 시작인덱스, 두번째는 삭제할 요소 갯수, 세번째부터는 추가할 요소
+	let nums = [1, 2, 3, 4, 5];
+	let spliceResult1 = nums.splice(2); // nums 배열의 2번 인덱스부터 끝까지 삭제(3, 4, 5)
+	document.write("splice(2) 기존 배열 : " + nums + "<br>"); // 1, 2
+	document.write("splice(2) 삭제된 배열 : " + spliceResult1 + "<br>"); // 3, 4, 5
+	
+	let subjects = ["JAVA", "JSP", "Spring", "HTML", "CSS"];
+	let spliceResult2 = subjects.splice(2, 2); // 2번 인덱스부터 2개 요소 삭제("Spring", "HTML")
+	document.write("splice(2, 2) 기존 배열 : " + subjects + "<br>"); // "JAVA", "JSP", "CSS"
+	document.write("splice(2, 2) 삭제된 배열 : " + spliceResult2 + "<br>"); // "Spring", "HTML"
+	
+// 	let spliceResult3 = subjects.splice(1, 1, "Javascript");
+	// => 1번 인덱스부터 1개 요소 삭제("JSP") 후 해당 인덱스에 "Javascript" 가 추가됨
+	let spliceResult3 = subjects.splice(1, 1, "Javascript", "jQuery");
+// 	document.write("splice(2, 1, 'Javascript') 기존 배열 : " + subjects + "<br>"); // "JAVA", "Javascript", "CSS"
+// 	document.write("splice(2, 1, 'Javascript') 삭제된 배열 : " + spliceResult3 + "<br>"); // "JSP"
+	// => 1번 인덱스부터 1개 요소 삭제("JSP") 후 해당 인덱스에 "Javascript", "jQuery" 가 추가됨
+	document.write("splice(2, 1, 'Javascript') 기존 배열 : " + subjects + "<br>"); // "JAVA", "Javascript", "jQuery", "CSS"
+	document.write("splice(2, 1, 'Javascript') 삭제된 배열 : " + spliceResult3 + "<br>"); // "JSP"
+
+	document.write("<hr>");
+	
+	// slice() : 배열 내의 요소 추출(기존 배열 변화 없이 새 배열 생성)
+	// => slice(정수) : 정수값에 해당하는 인덱스부터 끝까지 추출하여 새 배열 생성
+	// => slice(정수, 정수) : 앞의 정수를 시작인덱스, 뒤의 정수를 끝 인덱스로 지정하여
+	//                        시작인덱스 ~ 끝인덱스-1 까지 추출하여 새 배열 생성
+	let colors = ["red", "green", "blue", "white", "black"];
+	let colors2 = colors.slice(2); // 2번 ~ 끝인덱스까지 추출
+	document.write("colors.slice(2) 기존 배열 : " + colors + "<br>"); // red,green,blue,white,black(변동 없음)
+	document.write("colors.slice(2) 추출된 배열 : " + colors2 + "<br>"); // blue,white,black
+
+	let colors3 = colors.slice(2, 4); // 2번 ~ 4번 앞(4 - 1 = 3번 인덱스)까지 추출
+	document.write("colors.slice(2, 4) 기존 배열 : " + colors + "<br>"); // red,green,blue,white,black(변동 없음)
+	document.write("colors.slice(2, 4) 추출된 배열 : " + colors3 + "<br>"); // blue,white
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 2. 파라미터는 없고, 리턴값만 있는 함수 정의 
+	// 1) 1 ~ 10 까지의 합을 계산 후 리턴하는 함수 getTotal() 정의
+	function getTotal() {
+		let total = 0;
+		
+		for(let i = 1; i <= 10; i++) {
+			total += i;
+		}
+		
+		return total;
+	}
+	// ----------------------------------------------------------------
+	// 2. 파라미터는 없고, 리턴값만 있는 함수 호출
+	// 1) getTotal() 메서드를 호출하여 리턴값을 변수 total 에 저장 후 출력
+	let total = getTotal();
+	document.write("1 ~ 10 까지의 합 = " + total);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
