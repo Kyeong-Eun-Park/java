@@ -1,5 +1,8 @@
 package com.itwillbs.fintech.controller;
 
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.fintech.generator.RSAKeyGenerator;
+import com.itwillbs.fintech.service.BankService;
 import com.itwillbs.fintech.service.MemberService;
+import com.itwillbs.fintech.vo.AccountVO;
 import com.itwillbs.fintech.vo.MemberVO;
 
 @Controller
@@ -20,13 +26,33 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private BankService bankService;
+	
 	@Value("${client_id}")
 	private String client_id;
+	
+	@Autowired
+	private RSAKeyGenerator keyGenerator;
 	
 	// "/MemberJoinForm.me" 요청에 대해 "member/member_join_form.jsp" 페이지 포워딩
 	// => GET 방식 요청, Dispatch 방식 포워딩
 	@GetMapping(value = "/MemberJoinForm.me")
-	public String joinForm() {
+	public String joinForm(HttpSession session, Model model) {
+		// --------- 패스워드 등 개인정보 암호화(RSA)를 위한 키 생성 및 전송 --------
+		PublicKey publicKey = keyGenerator.getPublicKey();
+		PrivateKey privateKey = keyGenerator.getPrivateKey();
+		String publicKeyModulus = keyGenerator.getModulus(publicKey);
+		String publicKeyExponent = keyGenerator.getPublicExponent(publicKey);
+		
+		// 세션에 개인키 저장
+		session.setAttribute("_RSA_WEB_Key_", privateKey);
+		
+		// 회원가입 폼에 Modulus, Exponent 값 전달
+		model.addAttribute("RSAModulus", publicKeyModulus);
+		model.addAttribute("RSAExponent", publicKeyExponent);
+		// --------------------------------------------------------------------------
+		
 		return "member/member_join_form";
 	}
 	
@@ -101,7 +127,7 @@ public class MemberController {
 		//    MemberService - getPasswd() 메서드 호출
 		//    => 파라미터 : 아이디(또는 MemberVO 객체)   리턴타입 : String(또는 MemberVO 객체)
 		String passwd = service.getPasswd(member.getId());
-//		System.out.println(passwd);
+		System.out.println(passwd);
 		
 		// 3. DB로부터 조회된 기존 패스워드(암호문)을 입력받은 패스워드(평문)과 비교하여
 		//    로그인 성공 여부 판별 - BCryptPasswordEncoder 객체의 matches() 메서드 활용
@@ -116,6 +142,20 @@ public class MemberController {
 			model.addAttribute("msg", "로그인 실패!");
 			return "fail_back";
 		} else { // 로그인 성공(= 패스워드 일치)
+			// --------- 핀테크 정보(access_token, user_seq_no) 조회 추가 ----------
+			// BankService - getAccount() 메서드 호출하여 계좌 정보 조회
+			// BankMapper - selectAccount() 메서드를 통해 SELECT 작업 수행
+			// => 파라미터 : 아이디   리턴타입 : AccountVO(account)
+			AccountVO account = bankService.getAccount(member.getId());
+//			System.out.println(account);
+			
+			// 만약, 계좌 정보가 존재할 경우(account != null)
+			if(account != null) {
+				// 세션 객체에 access_token, user_seq_no 저장
+				session.setAttribute("access_token", account.getAccess_token());
+				session.setAttribute("user_seq_no", account.getUser_seq_no());
+			}
+			// ---------------------------------------------------------------------
 			// 세션 객체에 아이디 저장(속성명 sId) 후 메인페이지로 리다이렉트
 			session.setAttribute("sId", member.getId());
 			return "redirect:/";

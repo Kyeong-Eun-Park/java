@@ -9,7 +9,8 @@
 <!-- css/main.css 파일 불러오기 -->
 <link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/resources/css/subpage.css" rel="stylesheet" type="text/css">
-<script src="js/jquery-3.6.4.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.4.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jsencrypt.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		// 각 규칙 통과 여부를 저장할 변수 선언
@@ -165,7 +166,8 @@
 		});
 		
 		// 폼 태그에 대한 submit 이벤트 처리
-		$("form").submit(function() {
+		$("#btnJoin").on("click", function() {
+			alert("확인");
 			// 이름, 아이디, 패스워드, 패스워드확인란에 대한 모든 규칙이 통화했을 경우에만
 			// submit 기능이 동작하도록 true 리턴하고, 아니면 false 리턴
 			// => 단, 사전에 각 규칙을 통과했는지 여부를 변수에 저장하는 작업 필요
@@ -186,9 +188,26 @@
 				$("#passwd2").focus();
 				return false;
 			}
+
+			// ------------- 패스워드 암호화(RSA) 추가 -------------
+			let id = $("#id").val();
+			let passwd = $("#passwd").val();
+			
+			let rsaKey = new RSAKey();
+			rsaKey.setPublic($("#rsaPublicKeyModulus").val(), $("#rsaPublicKeyExponent").val());
+			
+			$("#id").attr("name", "");
+			$("#passwd").attr("name", "");
+			
+			console.log('$("#id").attr("name") : ' + $("#id").attr("name"));
+			console.log('$("#passwd").attr("name") : ' + $("#passwd").attr("name"));
+			
+			$("form").prepend("<input type='hidden' name='id' value='" + rsaKey.encrypt(id) + "'>");
+			$("form").prepend("<input type='hidden' name='passwd' value='" + rsaKey.encrypt(passwd) + "'>");
+			// -----------------------------------------------------
 			
 			// 모든 규칙 통과 시 submit 동작 수행
-			return true;
+			$("form").submit();
 			
 		});
 		
@@ -262,7 +281,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" id="btnArea">
-						<input type="submit" value="가입">
+						<input type="button" value="가입" id="btnJoin">
 						<input type="reset" value="초기화">
 						<input type="button" value="돌아가기">
 					</td>

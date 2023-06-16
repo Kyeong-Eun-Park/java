@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.fintech.mapper.BankMapper;
+import com.itwillbs.fintech.vo.AccountVO;
 import com.itwillbs.fintech.vo.ResponseTokenVO;
 
 @Service
@@ -21,6 +22,11 @@ public class BankService {
 		} else {
 			return 0;
 		}
+	}
+
+	// 계좌 정보 조회
+	public AccountVO getAccount(String id) {
+		return mapper.selectAccount(id);
 	}
 	
 }

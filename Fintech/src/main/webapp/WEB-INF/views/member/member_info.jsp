@@ -20,7 +20,7 @@
 				+ "?response_type=code"
 				+ "&client_id=${client_id}"
 				+ "&redirect_uri=http://localhost:8082/fintech/callback"
-				+ "&scope=login inquiry transfer"
+				+ "&scope=login inquiry transfer oob"
 				+ "&state=12345678901234567890123456789012"
 				+ "&auth_type=0";
 			// 산업은행 - 12345678 계좌 입력했음

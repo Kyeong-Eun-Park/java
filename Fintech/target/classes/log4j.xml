@@ -35,7 +35,7 @@
 	<!-- SQL Logger 추가 -->
 	<!-- 1) jdbc.sqlonly : SQL 쿼리 문장에 대한 로그(전달인자 포함한 문장) -->
 	<logger name="jdbc.sqlonly" additivity="false">
-		<level value="warn" />
+		<level value="info" />
 		<appender-ref ref="console" />	
 	</logger>
 	
@@ -47,7 +47,7 @@
 	
 	<!-- 3) jdbc.audit: JDBC 호출 정보에 대한 로그(ResultSet 제외) => 내용 많음 -->
 	<logger name="jdbc.audit" additivity="false">
-		<level value="info" />
+		<level value="off" />
 		<appender-ref ref="console" />	
 	</logger>
 	
@@ -59,7 +59,7 @@
 	
 	<!-- 5) jdbc.resultsettable: SELECT 실행 결과(데이터 테이블) 에 대한 로그 -->
 	<logger name="jdbc.resultsettable" additivity="false">
-		<level value="warn" />
+		<level value="info" />
 		<appender-ref ref="console" />	
 	</logger>
 	
